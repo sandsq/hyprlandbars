@@ -1,0 +1,325 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Ubuntu Mono, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#temperature,
+#custom-colorpicker,
+#custom-pacman,
+#custom-spotify {
+    box-shadow: 0.15rem 0.15rem rgba(10, 51, 55, 0.7);
+    margin-bottom: 0.2rem;
+    margin-right: 0.2rem;
+
+    padding: 0rem 0.7rem;
+    border-radius: 0.4rem;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+
+    -moz-background-clip: padding; 
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+#tray,
+#workspaces {
+    box-shadow: 0.15rem 0.15rem rgba(89, 74, 56, 0.7); 
+/*    #71c5cd;*/
+    margin-bottom: 0.2rem;
+
+    -moz-background-clip: padding; 
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+#custom-spotify {
+    margin-right: 3rem;
+    background-color: rgba(247, 237, 225, 0.15);
+
+}
+
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.0);
+/*    border-bottom: 3px solid rgba(100, 114, 125, 0.0);*/
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/*#window,*/
+#workspaces {
+    background-color: rgba(48, 48, 48, 0.8);
+    border-radius: 0 0.4rem 0.4rem 0;
+/*    font-weight: bold;*/
+    padding: 0.1rem 0.2rem;
+    padding-right: 0.5rem;
+    border-width: 2px 2px 2px 0px;
+    border-style: solid;
+    border-color: #f7ede1;
+}
+
+/*
+    padding here increases the size of the buttons
+    margin increases space between buttons
+    so if there's no borders, it doesn't really make a difference
+*/
+#workspaces button {
+    background-color: transparent;
+    color: #f7ede1;
+    padding: 0rem 0.5rem; 
+    margin: 0rem 0.0rem;
+/*    font-weight: bold;*/
+/*    border-radius: 0.3rem;*/
+/*    border-style: solid;*/
+/*    border-width: 0 2px 0 2px;*/
+/*    border-color: #a0a0a0;*/
+}
+
+#workspaces button.active {
+    color: #36d7a4;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#custom-colorpicker {
+  border-radius: 0.4rem;
+/*  background-color: #ffffff;*/
+  background: linear-gradient(0deg, rgba(0, 217, 255, 0.4) 50%, transparent 0%), 
+              linear-gradient(45deg, rgba(0, 0, 128, 0.4) 50%, transparent 0%), 
+              linear-gradient(90deg, rgba(11, 0, 255, 0.4) 50%, transparent 0%), 
+              linear-gradient(135deg, pink 50%, transparent 0%), 
+              linear-gradient(180deg, brown 50%, transparent 0%),
+              linear-gradient(225deg, yellow 50%, transparent 0%),
+              linear-gradient(270deg, red 50%, transparent 0%);
+  color: black;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  padding-right: 0.8rem;
+}
+
+#custom-controller {
+    background-color: #665366;
+}
+
+
+
+#custom-pacman {
+    background-color: #ffee70;
+    padding-right: 1rem;
+}
+
+#clock {
+    background-color: #ebc1e7 ;
+    font-size: 16;
+/*    font-weight: bold;*/
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #5dda92;
+    color: #000000;
+/*    font-weight: bold;*/
+}
+
+#memory {
+    background-color: #bc7ed5;
+/*    font-weight: bold;*/
+}
+
+
+#disk {
+    background-color: #964B00;
+}
+
+#backlight {
+    background-color: #90b1b1;
+}
+
+#network {
+    background-color: #2980b9;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    background-color:  #DAF7A6;
+    color: #000000;
+
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+    color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: #f3b773;
+/*    font-weight: bold;*/
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: rgba(48, 48, 48, 0.8);
+    padding: 0rem 0.5rem;
+    border-radius: 0.4rem 0 0 0.4rem;
+    border-width: 2px 0px 2px 2px;
+    border-style: solid;
+    border-color: #f7ede1;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}

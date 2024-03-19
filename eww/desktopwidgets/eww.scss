@@ -1,0 +1,156 @@
+*{
+	all: unset;
+	font-family: FontAwesome, Ubuntu Mono, Arial;
+	color: #151515;
+}
+
+.dockbox {
+	background-color: #f7ede1;
+	// border-width: 0px 1px 1px 0px; 
+	// border-style: solid;
+	// border-color: white; //#6b5843;
+	border-radius: 0.4rem;
+	margin: 0.4rem;
+
+	box-shadow: 0.35rem 0.35rem rgba(72, 50, 41, 0.7);
+
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.dockboxinner {
+	// margin: 0.2rem;
+	// box-shadow: 0.1rem 0.1rem #ffffff;
+	// border: 4px solid #6b5843;
+	// border-radius: 0.5rem;
+	// -moz-background-clip: padding; 
+	// -webkit-background-clip: padding-box;
+	// background-clip: padding-box;
+}
+
+.separator {
+	font-weight: bold;
+	margin: 0px 8px 0px 8px;
+	padding: 1px 0px 1px 0px;
+}
+
+.separator2 {
+	font-weight: bold;
+	padding: 1px 0px 1px 0px;
+}
+
+// app launcher
+.appicon {
+	border-radius: 0.5rem;
+	
+	padding: 0.5rem;
+    background-repeat: no-repeat;
+    background-position: center; 
+	background-size: 40px;
+	min-height: 40px;
+	min-width: 40px;
+}
+
+.appicon:hover {
+	background-color: #ffffff;
+}
+
+.appicon:active {
+	background-color: #d9c7b1;
+}
+
+// weather
+.weatherbox {
+	margin: 0rem 0.2rem 0.2rem 0rem;
+	padding: 0.25rem 0.2rem 0.25rem 0.5rem;
+	font-size: 15px;
+	background-color: rgba(247, 237, 225, 0.15);
+	border: 2px solid black;
+	border-radius: 0.4rem;
+	box-shadow: 0.15rem 0.15rem rgba(10, 51, 55, 0.7);
+
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.weathericon {
+	font-family: Iosevka Nerd Font;
+	font-weight : normal;
+}
+
+.weathertemp {
+	font-weight : bold;
+	margin : 0px 0px 0px 3px;
+}
+
+.weatherquote {
+	font-weight: bold;
+	margin: 0px 0px 0px 0px;
+}
+
+.weatherquote2 {
+	font-weight: bold;
+	margin: 2px 0px;
+	padding-right: 0.3rem;
+}
+
+.hidden {
+	color: rgba(0, 0, 0, 1)
+}
+
+// clock
+.clockbox {
+
+    margin: 0rem 0.2rem 0.2rem 0.2rem;
+	padding: 0.1rem 0rem 0.15rem 0rem;
+	font-size: 15px;
+	background-color: #ebc1e7;
+	border: 2px solid black;
+	border-radius: 0.4rem;
+	box-shadow: 0.15rem 0.15rem rgb(10, 51, 55, 0.7);
+
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.clocktext {
+	font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 1px;
+}
+
+.clockicon {
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0 0.8rem;
+}
+
+// calendar
+.calendarbox {
+	border-radius: 0.4rem;
+ 	// border: 3px solid #25605e;
+ 	padding: 1rem;
+ 	background: #f7ede1;
+
+ 	margin: 0.4rem;
+
+	box-shadow: 0.35rem 0.35rem rgb(10, 51, 55, 0.7);
+
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+}
+
+.cal {
+  color: #25605e;
+  padding: 8px;
+  padding-bottom: 3px;
+
+  background: #f7ede1;
+  border-radius: 0.3rem;
+  font-size: 20px;
+}
+

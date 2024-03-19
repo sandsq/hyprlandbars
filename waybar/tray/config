@@ -1,0 +1,134 @@
+{
+    "name": "mainbar",
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "height": 24, // Waybar height (to be removed for auto height)
+    "margin-top": 4,
+    // "margin-bottom": -4,
+    "output": ["DP-3"],
+    // "width": 1280, // Waybar width
+    "spacing": 6, // Gaps between modules (4px)
+    "layer": "top",
+    // "mode": "dock",
+    // "exclusive": true,
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": [],//["clock", ],
+    "modules-right": ["custom/spotify", "pulseaudio", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
+    // Modules configuration
+    "hyprland/workspaces": {
+        
+        "show_special": true,
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "<b>{name}:</b><span>{icon}</span>",
+        "format-icons": {
+            "1": "", //     
+            "2": "", // "", 
+            "3": "",
+            "4": "", // "",
+            "5": "",
+            "6": "", //"",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "urgent": "",
+            "focused": "",
+            "empty": "",
+            "default": "",
+            "special": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        // "format": "{%a, %b-%d :%I:%M %p}",
+        "format": "  <b>{:%a, %b %d, %I:%M %p}</b>  ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        // "format-alt": "{:%Y-%m-%d}"
+    },
+    "custom/colorpicker": {
+        "on-click": "sleep 0.5 && hyprpicker -a",
+        "format": ""
+    },
+    "custom/controller": {
+        "interval": 300,
+        "exec": "$HOME/Dropbox/linux/batterycheck.sh",
+        "format": "{}% "
+    },
+    "cpu": {
+        "format": "<b>{usage}%</b> ",
+        "tooltip": false,
+        // "on-click": "conky -c /home/sand/Dropbox/linux/conky/conky.config"
+    },
+    "memory": {
+        "format": "<b>{}%</b> ", // <span font=\"FontAwesome\"></span>",
+        // "on-click": "conky -c /home/sand/Dropbox/linux/conky/conky.config"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 100,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "<b>{temperatureC}°C</b> {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "alacritty -e nmtui"
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "<b>{volume}%</b> {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "<b>{volume}%</b> ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format":"⏻",
+        "on-click": "nwg-bar",
+        "tooltip": false,
+   },
+   "custom/pacman": {
+        "format": "<b>{}</b> ",
+        "interval": 7200, // every two hour
+        "exec": "checkupdates | wc -l",
+        // "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
+        "exec-if": "exit 0", // always run; consider advanced run conditions
+        // "on-click": "konsole -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
+        "on-click": "pkill -SIGRTMIN+8 waybar",
+        "signal": 8
+    },
+    "custom/spotify": {
+        "exec": "/usr/bin/python /home/sand/Dropbox/linux/bars/waybar/tray/mediaplayer.py --player spotify",
+        "format": "{} ",
+        "return-type": "json",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-down": "playerctl -p spotify next",
+        "on-scroll-up": "playerctl -p spotify previous"
+    }
+}
+

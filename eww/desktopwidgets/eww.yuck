@@ -1,0 +1,139 @@
+;; Weather
+(defpoll RUN :interval "15m" `scripts/weather_info --getdata`)
+; (defvar RUN "test")
+(defpoll ICON :interval "5m" `scripts/weather_info --icon`)
+(defpoll TEMP :interval "5m" `scripts/weather_info --temp`)
+(defpoll HEX :interval "5m" `scripts/weather_info --hex`)
+(defpoll QUOTE :interval "5m" `scripts/weather_info --quote`)
+(defpoll QUOTE2 :interval "5m" `scripts/weather_info --quote2`)
+
+(defwidget weather [] 
+			(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
+				(label :class "weathericon" :style "color: ${HEX};" :text ICON)
+				(label :class "weathertemp" :text TEMP)
+				(label :class "separator" :text "")
+				(label :class "weatherquote":text QUOTE)))
+
+(defwidget weather2 []
+		(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
+		(label :class "weatherquote2" :text QUOTE2)))
+
+(defwidget weatherquotes []
+		(box :orientation "h" :spacing 5 :valign "center" :halign "end" :space-evenly "false"
+		(weather)
+		(weather2)))
+
+(defwidget weatherthrowaway []
+		(label :active false :visible false :text RUN))
+
+(defwidget weathertogether []
+		(box :orientation "h" :spacing 5 :valign "center" :halign "end" :space-evenly "false"
+		(weatherquotes)
+		(weatherthrowaway)))
+
+(defwindow weather
+											:monitor 3
+											:geometry (geometry :x "17.5%"
+																															:y "-32px"
+																															:width "100px"
+																															:height "24px"
+																															:anchor "top left")
+											:stacking "fg"
+			(weathertogether))
+
+;; @@@@@@@@@@@@@@@@@@@@@@@
+;; Apps
+;; @@@@@@@@@@@@@@@@@@@@@@@
+(defwidget appsinner [] 
+		(box :class "dockbox"
+			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+				(button :style "background-image: url('icon.svg');" :class "appicon" :onclick "godot &")
+				(button :style "background-image: url('vscode.svg');" :class "appicon" :onclick "code &")
+				(button :style "background-image: url('aseprite.png');" :class "appicon" :onclick "/home/sand/CrucialSSD/SteamLibrary/steamapps/common/Aseprite/aseprite &")
+				)))
+
+(defwidget apps []
+			(box :class "dockbox"
+					(appsinner)))
+
+(defwindow apps
+           :monitor 3
+           :geometry (geometry :x "25%"
+                               :y "9%"
+                               :width "300px"
+                               :height "80px"
+                               :anchor "top right")
+           :stacking "bg"
+           ; :reserve (struts :distance "80px" :side "top")
+           ; :windowtype "dock"
+           ; :wm-ignore false
+			(appsinner))
+
+(defwindow appstablet
+           :monitor 2
+           :geometry (geometry :x "25%"
+                               :y "9%"
+                               :width "300px"
+                               :height "80px"
+                               :anchor "top right")
+           :stacking "bg"
+           ; :reserve (struts :distance "80px" :side "top")
+           ; :windowtype "dock"
+           ; :wm-ignore false
+			(appsinner))
+
+;; Time
+(defpoll time :interval "10s"
+  "date '+%a, %b %d, %I:%M %p'")
+
+(defwidget clockicon []
+			(label :class "clockicon" :text ""))
+
+(defwidget timebox []
+	  (centerbox :class "clockbox" :orientation "h" :halign "center" 
+	  	(clockicon)
+	   (label :class "clocktext" :text "${time}") ; :class "clocktext"
+	   (clockicon)))
+
+(defwidget timeboxhover []
+			(eventbox	:onhover "eww open fgcalendar --config ${EWW_CONFIG_DIR}"
+			(timebox)))
+
+(defwindow clock
+					:monitor 3
+					:geometry (geometry :x "0"
+																									:y "-32px"
+																									; :width "150px"
+																									:height "32px"
+																									:anchor "top center")
+					:stacking "overlay"
+			(timeboxhover))
+
+;; Calendar
+(defwidget cal []
+		(box :class "calendarbox"
+  		(calendar :halign "center" :valign "center" :class "cal")))
+
+(defwidget calhoverlost []
+		(eventbox :onhoverlost "eww close fgcalendar --config ${EWW_CONFIG_DIR}"
+			(cal)))
+
+(defwindow calendar
+  :monitor 3
+  :stacking "bg"
+  :geometry (geometry :x "0"
+                      :y "1%"
+                      ; :width "360px"
+                      ; :height "320px"
+                      :anchor "top center")
+		(cal))
+
+(defwindow fgcalendar
+  :monitor 3
+  :stacking "fg"
+  :geometry (geometry :x "0"
+                      :y "1%"
+                      ; :width "360px"
+                      ; :height "320px"
+                      :anchor "top center")
+		(calhoverlost))
