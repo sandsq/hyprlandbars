@@ -1,8 +1,23 @@
+$fontfamilies: "FontAwesome", "Ubuntu Mono", monospace;
+$mainboxshadowcolor: rgba(10, 51, 55, 0.7);
+$mainborderradius: 0.4rem;
+$mainfontsize: 15px;
+$mainboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
+
+$ispixelstyle: true;
+@if $ispixelstyle == true {
+    $fontfamilies: "monogram extended", "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
+    $mainborderradius: 0rem;
+    $mainfontsize: 16px;
+    $mainboxshadow: 0.15rem 0.15rem 0 0 $mainboxshadowcolor, 0.15rem 0.15rem 0 0 $mainboxshadowcolor;
+}
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Ubuntu Mono, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-family: $fontfamilies;
+    font-size: $mainfontsize;
 }
+
 
 #clock,
 #cpu,
@@ -13,12 +28,12 @@
 #custom-colorpicker,
 #custom-pacman,
 #custom-spotify {
-    box-shadow: 0.15rem 0.15rem rgba(10, 51, 55, 0.7);
+    box-shadow: 0.15rem 0.15rem $mainboxshadowcolor;
     margin-bottom: 0.2rem;
     margin-right: 0.2rem;
 
-    padding: 0rem 0.7rem;
-    border-radius: 0.4rem;
+    padding: 0rem 0.8rem 0rem 0.3rem;
+    border-radius: $mainborderradius;
     color: black;
     border-style: solid;
     border-width: 2px;
@@ -31,9 +46,13 @@
 
 #tray,
 #workspaces {
-    box-shadow: 0.15rem 0.15rem rgba(89, 74, 56, 0.7); 
+    background-color: #324a4c;
+    box-shadow: 0.15rem 0.15rem $mainboxshadowcolor; // rgba(89, 74, 56, 0.7); 
 /*    #71c5cd;*/
     margin-bottom: 0.2rem;
+
+    border-style: solid;
+    border-color: black; //#f7ede1;
 
     -moz-background-clip: padding; 
     -webkit-background-clip: padding-box;
@@ -59,23 +78,7 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
@@ -93,14 +96,13 @@ button:hover {
 
 /*#window,*/
 #workspaces {
-    background-color: rgba(48, 48, 48, 0.8);
-    border-radius: 0 0.4rem 0.4rem 0;
+    // background-color: rgba(48, 48, 48, 0.8);
+    border-radius: 0 $mainborderradius $mainborderradius 0;
 /*    font-weight: bold;*/
     padding: 0.1rem 0.2rem;
     padding-right: 0.5rem;
     border-width: 2px 2px 2px 0px;
-    border-style: solid;
-    border-color: #f7ede1;
+   
 }
 
 /*
@@ -113,11 +115,7 @@ button:hover {
     color: #f7ede1;
     padding: 0rem 0.5rem; 
     margin: 0rem 0.0rem;
-/*    font-weight: bold;*/
-/*    border-radius: 0.3rem;*/
-/*    border-style: solid;*/
-/*    border-width: 0 2px 0 2px;*/
-/*    border-color: #a0a0a0;*/
+
 }
 
 #workspaces button.active {
@@ -137,11 +135,6 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
@@ -154,7 +147,7 @@ button:hover {
 }
 
 #custom-colorpicker {
-  border-radius: 0.4rem;
+  border-radius: $mainborderradius;
 /*  background-color: #ffffff;*/
   background: linear-gradient(0deg, rgba(0, 217, 255, 0.4) 50%, transparent 0%), 
               linear-gradient(45deg, rgba(0, 0, 128, 0.4) 50%, transparent 0%), 
@@ -167,7 +160,7 @@ button:hover {
   border-style: solid;
   border-width: 2px;
   border-color: black;
-  padding-right: 0.8rem;
+
 }
 
 #custom-controller {
@@ -209,24 +202,12 @@ label:focus {
 
 #memory {
     background-color: #bc7ed5;
-/*    font-weight: bold;*/
+    padding-right: 0.3rem;
 }
 
 
 #disk {
     background-color: #964B00;
-}
-
-#backlight {
-    background-color: #90b1b1;
-}
-
-#network {
-    background-color: #2980b9;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
 }
 
 #pulseaudio {
@@ -245,24 +226,6 @@ label:focus {
     color: #000000;
 }
 
-#wireplumber.muted {
-    background-color: #f53c3c;
-}
-
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
 #temperature {
     background-color: #f3b773;
 /*    font-weight: bold;*/
@@ -273,12 +236,10 @@ label:focus {
 }
 
 #tray {
-    background-color: rgba(48, 48, 48, 0.8);
+    // background-color: //rgba(48, 48, 48, 0.8);
     padding: 0rem 0.5rem;
-    border-radius: 0.4rem 0 0 0.4rem;
+    border-radius: $mainborderradius 0 0 $mainborderradius;
     border-width: 2px 0px 2px 2px;
-    border-style: solid;
-    border-color: #f7ede1;
 }
 
 #tray > .passive {
@@ -288,40 +249,4 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
 }

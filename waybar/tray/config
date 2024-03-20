@@ -17,7 +17,6 @@
     "modules-right": ["custom/spotify", "pulseaudio", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
-        
         "show_special": true,
         "disable-scroll": true,
         "all-outputs": true,
@@ -43,7 +42,7 @@
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10
+        "spacing": 8
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -62,13 +61,18 @@
         "format": "{}% "
     },
     "cpu": {
-        "format": "<b>{usage}%</b> ",
+        "format": "<b>{usage}%</b> ",
         "tooltip": false,
         // "on-click": "conky -c /home/sand/Dropbox/linux/conky/conky.config"
     },
     "memory": {
-        "format": "<b>{}%</b> ", // <span font=\"FontAwesome\"></span>",
+        "format": "<b>{}%</b> ", // <span font=\"FontAwesome\"></span>",
         // "on-click": "conky -c /home/sand/Dropbox/linux/conky/conky.config"
+    },
+    "disk": {
+        "interval": 600,
+        "format": "{percentage_free}% ",
+        "path": "/"
     },
     "temperature": {
         // "thermal-zone": 2,

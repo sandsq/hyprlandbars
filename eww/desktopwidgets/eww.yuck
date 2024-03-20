@@ -1,6 +1,9 @@
+;; things to mess around with
+;; color chooser for fast color choosing
+
 ;; Weather
-(defpoll RUN :interval "15m" `scripts/weather_info --getdata`)
-; (defvar RUN "test")
+; (defpoll RUN :interval "15m" `scripts/weather_info --getdata`)
+(defvar RUN "test")
 (defpoll ICON :interval "5m" `scripts/weather_info --icon`)
 (defpoll TEMP :interval "5m" `scripts/weather_info --temp`)
 (defpoll HEX :interval "5m" `scripts/weather_info --hex`)
@@ -71,11 +74,11 @@
 
 (defwindow appstablet
            :monitor 2
-           :geometry (geometry :x "25%"
-                               :y "9%"
+           :geometry (geometry :x "38%"
+                               :y "46%"
                                :width "300px"
                                :height "80px"
-                               :anchor "top right")
+                               :anchor "top left")
            :stacking "bg"
            ; :reserve (struts :distance "80px" :side "top")
            ; :windowtype "dock"
@@ -84,16 +87,17 @@
 
 ;; Time
 (defpoll time :interval "10s"
-  "date '+%a, %b %d, %I:%M %p'")
+  "date '+%I:%M %p - %a, %b %d'")
 
-(defwidget clockicon []
-			(label :class "clockicon" :text ""))
+(defwidget clockicon [icon]
+			(label :class "clockicon" :text icon))
 
 (defwidget timebox []
 	  (centerbox :class "clockbox" :orientation "h" :halign "center" 
-	  	(clockicon)
-	   (label :class "clocktext" :text "${time}") ; :class "clocktext"
-	   (clockicon)))
+	  	(clockicon :icon "") ; maybe would be interesting to change icon depending on time of day
+	   (label :class "clocktext" :text "${time}")
+	   (eventbox :onhover "eww open fgcalendar --config ${EWW_CONFIG_DIR}" (clockicon :icon ""))
+	   ))
 
 (defwidget timeboxhover []
 			(eventbox	:onhover "eww open fgcalendar --config ${EWW_CONFIG_DIR}"
@@ -107,7 +111,7 @@
 																									:height "32px"
 																									:anchor "top center")
 					:stacking "overlay"
-			(timeboxhover))
+			(timebox))
 
 ;; Calendar
 (defwidget cal []
@@ -137,3 +141,31 @@
                       ; :height "320px"
                       :anchor "top center")
 		(calhoverlost))
+
+
+;; disk
+(defpoll USEDDISKMAIN :interval "1m" `scripts/calcdiskusage.sh`)
+(defpoll USEDDISKSSD :interval "1m" `scripts/calcdiskusage.sh --ssd`)
+(defpoll USEDDISKNAS :interval "1m" `scripts/calcdiskusage.sh --nas`)
+
+(defwidget diskusage [drive circleclass]
+	(box :class "res_box"
+		(box :class "res_circle" :orientation "h" :valign "center" :halign "center"
+				(circular-progress :class circleclass :start-at 75 :value drive :thickness 12
+						(label :class "res_circle_small" :text "test")))))
+
+(defwidget diskpanel []
+		(centerbox :class "res_panel" :orientation "h"
+				(diskusage :drive USEDDISKMAIN :circleclass "res_main")
+				(diskusage :drive USEDDISKSSD :circleclass "res_ssd")
+				(diskusage :drive USEDDISKNAS :circleclass "res_nas")))
+
+(defwindow disk
+		:monitor 3
+  :stacking "bg"
+  :geometry (geometry :x "5%"
+                      :y "5%"
+                      ; :width "360px"
+                      ; :height "320px"
+                      :anchor "top right")
+		(diskpanel))

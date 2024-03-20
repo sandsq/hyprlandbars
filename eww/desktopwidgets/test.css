@@ -1,0 +1,165 @@
+* {
+  all: unset;
+  font-family: "Dina", "FontAwesome", "Ubuntu Mono", monospace;
+  font-size: 14px;
+  color: #151515;
+}
+
+.dockbox {
+  background-color: #f7ede1;
+  border-radius: 0rem;
+  margin: 0.4rem;
+  box-shadow: 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7), 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.separator {
+  font-weight: bold;
+  margin: 0px 8px 0px 8px;
+  padding: 1px 0px 1px 0px;
+}
+
+.separator2 {
+  font-weight: bold;
+  padding: 1px 0px 1px 0px;
+}
+
+.appicon {
+  border-radius: 0rem;
+  padding: 0.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40px;
+  min-height: 40px;
+  min-width: 40px;
+}
+
+.appicon:hover {
+  background-color: #ffffff;
+}
+
+.appicon:active {
+  background-color: #d9c7b1;
+}
+
+.weatherbox {
+  margin: 0rem 0.2rem 0.2rem 0rem;
+  padding: 0.25rem 0.2rem 0.25rem 0.5rem;
+  background-color: rgba(247, 237, 225, 0.15);
+  border: 2px solid black;
+  border-radius: 0rem;
+  box-shadow: 0.15rem 0.15rem rgba(10, 51, 55, 0.7);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.weathericon {
+  font-family: Iosevka Nerd Font;
+  font-weight: normal;
+}
+
+.weathertemp {
+  font-weight: bold;
+  margin: 0px 0px 0px 3px;
+}
+
+.weatherquote {
+  font-weight: bold;
+  margin: 2px 0px;
+}
+
+.weatherquote2 {
+  font-weight: bold;
+  margin: 2px 0px;
+  padding-right: 0.3rem;
+}
+
+.hidden {
+  color: rgb(0, 0, 0);
+}
+
+.clockbox {
+  margin: 0rem 0.2rem 0.2rem 0.2rem;
+  padding: 0.1rem 0rem 0.15rem 0rem;
+  background-color: #ebc1e7;
+  border: 2px solid black;
+  border-radius: 0rem;
+  box-shadow: 0.15rem 0.15rem rgba(10, 51, 55, 0.7);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.clocktext {
+  font-weight: bold;
+  padding-top: 1px;
+}
+
+.clockicon {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0 0.8rem;
+}
+
+.calendarbox {
+  border-radius: 0rem;
+  padding: 1rem;
+  background: #f7ede1;
+  margin: 0.4rem;
+  box-shadow: 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7), 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.cal {
+  color: #25605e;
+  padding: 8px;
+  padding-bottom: 3px;
+  background: #f7ede1;
+  border-radius: 0rem;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.res_panel {
+  background-color: #F0E9E1;
+  padding: 0.5rem;
+  margin: 0.4rem;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  box-shadow: 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7), 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7);
+}
+
+.res_box {
+  background-color: #eae0d5;
+  border-radius: 0rem;
+  padding: 14px 18px 14px 18px;
+  margin: 10px;
+  box-shadow: 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7), 0.35rem 0.35rem 0 0 rgba(10, 51, 55, 0.7);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.res_circle {
+  background-color: #E1DCD2;
+  border: 0px solid #161616;
+  border-radius: 100%;
+  padding: 0px;
+}
+
+.res_circle_small {
+  background-color: #F5EEE6;
+  border: 0px solid #161616;
+  border-radius: 100%;
+  padding: 45px;
+}
+
+.res_disk {
+  color: #67D4F1;
+}
