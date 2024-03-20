@@ -3,15 +3,19 @@ $mainboxshadowcolor: rgba(10, 51, 55, 0.7);
 $mainborderradius: 0.4rem;
 $mainfontsize: 15px;
 $mainboxshadow: 0.35rem 0.35rem $mainboxshadowcolor;
-$diskboxshadow: 0.35rem 0.35rem #236249b3;
+$diskboxshadowcolor: rgba(40, 80, 64, 0.70196);
+$diskboxshadow: 0.35rem 0.35rem $diskboxshadowcolor;
 $smallboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
+
+$creamcolor: #f7ede1;
+$darkcreamcolor: #887857;
 
 $ispixelstyle: true;
 @if $ispixelstyle == true {
 	$fontfamilies: "monogram extended", "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
 	$mainborderradius: 0rem;
 	$mainfontsize: 14px;
-	$mainboxshadow: 0.35rem 0.35rem 0 0 $mainboxshadowcolor, 0.35rem 0.35rem 0 0 $mainboxshadowcolor;
+	// $mainboxshadow: 0.35rem 0.35rem 0 0 $mainboxshadowcolor, 0.35rem 0.35rem 0 0 $mainboxshadowcolor;
 }
 
 
@@ -24,11 +28,10 @@ $ispixelstyle: true;
 
 .dockbox {
 	background-color: #f7ede1;
-	// border-width: 0px 1px 1px 0px; 
-	// border-style: solid;
-	// border-color: white; //#6b5843;
+	border: 0.2rem solid $darkcreamcolor;
 	border-radius: $mainborderradius;
 	margin: 0.4rem;
+	padding: 1rem;
 
 	box-shadow: $mainboxshadow; // rgba(72, 50, 41, 0.7);
 
@@ -37,19 +40,9 @@ $ispixelstyle: true;
 	background-clip: padding-box;
 }
 
-.dockboxinner {
-	// margin: 0.2rem;
-	// box-shadow: 0.1rem 0.1rem #ffffff;
-	// border: 4px solid #6b5843;
-	// border-radius: 0.5rem;
-	// -moz-background-clip: padding; 
-	// -webkit-background-clip: padding-box;
-	// background-clip: padding-box;
-}
-
 .separator {
 	font-weight: bold;
-	margin: 0px 8px 0px 8px;
+	margin: 0px 5px 0px 5px;
 	padding: 1px 0px 1px 0px;
 }
 
@@ -59,12 +52,14 @@ $ispixelstyle: true;
 }
 
 // app launcher
+// @@@@@@@@@@@
+// appicon should have equal padding around since that's what shows up when hovered
 .appicon {
 	border-radius: $mainborderradius;
 	
 	padding: 0.5rem;
-    background-repeat: no-repeat;
-    background-position: center; 
+  background-repeat: no-repeat;
+  background-position: center; 
 	background-size: 40px;
 	min-height: 40px;
 	min-width: 40px;
@@ -96,11 +91,12 @@ $ispixelstyle: true;
 .weathericon {
 	font-family: Iosevka Nerd Font;
 	font-weight : normal;
+	margin-right: 0.4rem;
 }
 
 .weathertemp {
 	font-weight : bold;
-	margin : 0px 0px 0px 3px;
+	// margin : 0px 0px 0px 3px;
 }
 
 .weatherquote {
@@ -152,7 +148,8 @@ $ispixelstyle: true;
 // calendar
 .calendarbox {
 	border-radius: $mainborderradius;
- 	// border: 3px solid #25605e;
+	border: 0.2rem solid $darkcreamcolor;
+ 	
  	padding: 1rem;
  	background: #f7ede1;
 
@@ -183,9 +180,10 @@ $ispixelstyle: true;
 // @@@@@@@@@@@@@@@
 .res_panel {
 	background-color: #F0E9E1;
-	padding: 0.5rem;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	margin: 0.4rem;
 	border-radius: $mainborderradius;
+	border: 0.2rem solid $darkcreamcolor;
 
 	box-shadow: $mainboxshadow;
 
@@ -199,23 +197,26 @@ $ispixelstyle: true;
 
 .res_box {
 	background-color: #eae0d5;
-	// border: 1px solid #E6DFD7;
+	border: 0.2rem solid $darkcreamcolor;
 	border-radius: $mainborderradius;
-	padding: 14px 18px 14px 18px;
-	margin: 10px;
+	padding: 14px 18px 0px 18px;
+	margin: 0.8rem;
 
-	box-shadow: $mainboxshadow;
+		// box-shadow: 0.7rem 0rem 0 0 $mainboxshadowcolor, 
+		// 					-0.7rem 0rem 0 0 $mainboxshadowcolor,
+		// 					0rem 0.7rem 0 0 $mainboxshadowcolor,
+		// 					0rem -0.7rem 0 0 $mainboxshadowcolor;
+
+	box-shadow: 0.35rem 0.35rem 0 0 $diskboxshadowcolor, 0.35rem 0.35rem 0 0 $diskboxshadowcolor;
 
 	-moz-background-clip: padding; 
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
-
-
-
+	
 }
 
 .res_circle {
-	background-color: #E1DCD2;
+	background-color: #cfc6b4;
 	border: 0px solid #161616;
 	border-radius: 100%;
 	padding: 0px;
@@ -226,9 +227,31 @@ $ispixelstyle: true;
 	border: 0px solid #161616;
 	border-radius: 100%;
 	padding: 45px;
-
+	font-weight: bold;
+	font-size: 28px;
+	color: $mainboxshadowcolor;
 }
 
-.res_disk {
-	color: #67D4F1;
+
+.res_main_disk {
+	color: #5CA9BF;
+}
+
+.res_ssd_disk {
+	color: #4FAA85;
+}
+
+.res_nas_disk {
+	color: #EC9671;
+}
+
+.drive_type {
+	border: 2px solid $mainboxshadowcolor;
+	padding: 0 0.5rem 0px 0.5rem;
+	margin: 0 0 10px 0;
+	color: $mainboxshadowcolor;
+	font-size: 28px;
+	font-weight: bold;
+
+	box-shadow: $smallboxshadow;
 }

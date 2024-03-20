@@ -1,5 +1,11 @@
+;; @@@@@@@@@@@
 ;; things to mess around with
 ;; color chooser for fast color choosing
+
+;; @@@@@@@@
+;; notes
+;; - space-evenly on multiple objects takes the max size and makes every object that size
+
 
 ;; Weather
 ; (defpoll RUN :interval "15m" `scripts/weather_info --getdata`)
@@ -10,31 +16,31 @@
 (defpoll QUOTE :interval "5m" `scripts/weather_info --quote`)
 (defpoll QUOTE2 :interval "5m" `scripts/weather_info --quote2`)
 
-(defwidget weather [] 
+(defwidget weatherwidget [] 
 			(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
 				(label :class "weathericon" :style "color: ${HEX};" :text ICON)
 				(label :class "weathertemp" :text TEMP)
 				(label :class "separator" :text "")
 				(label :class "weatherquote":text QUOTE)))
 
-(defwidget weather2 []
+(defwidget weatherquote2widget []
 		(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
 		(label :class "weatherquote2" :text QUOTE2)))
 
-(defwidget weatherquotes []
+(defwidget weatherquoteswidget []
 		(box :orientation "h" :spacing 5 :valign "center" :halign "end" :space-evenly "false"
-		(weather)
-		(weather2)))
+		(weatherwidget)
+		(weatherquote2widget)))
 
-(defwidget weatherthrowaway []
+(defwidget weatherthrowawaywidget []
 		(label :active false :visible false :text RUN))
 
-(defwidget weathertogether []
+(defwidget weathertogetherwidget []
 		(box :orientation "h" :spacing 5 :valign "center" :halign "end" :space-evenly "false"
-		(weatherquotes)
-		(weatherthrowaway)))
+		(weatherquoteswidget)
+		(weatherthrowawaywidget)))
 
-(defwindow weather
+(defwindow weatherwindow
 											:monitor 3
 											:geometry (geometry :x "17.5%"
 																															:y "-32px"
@@ -42,68 +48,68 @@
 																															:height "24px"
 																															:anchor "top left")
 											:stacking "fg"
-			(weathertogether))
+			(weathertogetherwidget))
 
 ;; @@@@@@@@@@@@@@@@@@@@@@@
 ;; Apps
 ;; @@@@@@@@@@@@@@@@@@@@@@@
-(defwidget appsinner [] 
-		(box :class "dockbox"
-			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+(defwidget appsinnerwidget [] 
+		(box :class "dockbox" :height 20
+			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly false
 				(button :style "background-image: url('icon.svg');" :class "appicon" :onclick "godot &")
 				(button :style "background-image: url('vscode.svg');" :class "appicon" :onclick "code &")
 				(button :style "background-image: url('aseprite.png');" :class "appicon" :onclick "/home/sand/CrucialSSD/SteamLibrary/steamapps/common/Aseprite/aseprite &")
 				)))
 
-(defwidget apps []
-			(box :class "dockbox"
-					(appsinner)))
+; (defwidget appswidget []
+; 			(box 
+; 					(appsinnerwidget)))
 
-(defwindow apps
+(defwindow appswindow
            :monitor 3
-           :geometry (geometry :x "25%"
-                               :y "9%"
-                               :width "300px"
-                               :height "80px"
+           :geometry (geometry :x "2%"
+                               :y "18%"
+                               ; :width "300px"
+                               ; :height "80px"
                                :anchor "top right")
            :stacking "bg"
            ; :reserve (struts :distance "80px" :side "top")
            ; :windowtype "dock"
            ; :wm-ignore false
-			(appsinner))
+			(appsinnerwidget))
 
-(defwindow appstablet
+(defwindow appstabletwindow
            :monitor 2
-           :geometry (geometry :x "38%"
-                               :y "46%"
-                               :width "300px"
-                               :height "80px"
+           :geometry (geometry :x "41%"
+                               :y "46.5%"
+                               ; :width "300px"
+                               ; :height "80px"
                                :anchor "top left")
            :stacking "bg"
            ; :reserve (struts :distance "80px" :side "top")
            ; :windowtype "dock"
            ; :wm-ignore false
-			(appsinner))
+			(appsinnerwidget))
 
 ;; Time
 (defpoll time :interval "10s"
   "date '+%I:%M %p - %a, %b %d'")
 
-(defwidget clockicon [icon]
+(defwidget clockiconwidget [icon]
 			(label :class "clockicon" :text icon))
 
-(defwidget timebox []
+(defwidget timeboxwidget []
 	  (centerbox :class "clockbox" :orientation "h" :halign "center" 
-	  	(clockicon :icon "") ; maybe would be interesting to change icon depending on time of day
+	  	(clockiconwidget :icon "") ; maybe would be interesting to change icon depending on time of day
 	   (label :class "clocktext" :text "${time}")
-	   (eventbox :onhover "eww open fgcalendar --config ${EWW_CONFIG_DIR}" (clockicon :icon ""))
+	   (eventbox :onhover "eww open fgcalendarwindow --config ${EWW_CONFIG_DIR}" (clockiconwidget :icon ""))
 	   ))
 
-(defwidget timeboxhover []
-			(eventbox	:onhover "eww open fgcalendar --config ${EWW_CONFIG_DIR}"
-			(timebox)))
+(defwidget timeboxhoverwidget []
+			(eventbox	:onhover "eww open fgcalendarwindow --config ${EWW_CONFIG_DIR}"
+			(timeboxwidget)))
 
-(defwindow clock
+(defwindow clockwindow
 					:monitor 3
 					:geometry (geometry :x "0"
 																									:y "-32px"
@@ -111,18 +117,18 @@
 																									:height "32px"
 																									:anchor "top center")
 					:stacking "overlay"
-			(timebox))
+			(timeboxwidget))
 
 ;; Calendar
-(defwidget cal []
+(defwidget calendarwidget []
 		(box :class "calendarbox"
   		(calendar :halign "center" :valign "center" :class "cal")))
 
-(defwidget calhoverlost []
-		(eventbox :onhoverlost "eww close fgcalendar --config ${EWW_CONFIG_DIR}"
-			(cal)))
+(defwidget calendarhoverlostwidget []
+		(eventbox :onhoverlost "eww close fgcalendarwindow --config ${EWW_CONFIG_DIR}"
+			(calendarwidget)))
 
-(defwindow calendar
+(defwindow calendarwindow
   :monitor 3
   :stacking "bg"
   :geometry (geometry :x "0"
@@ -130,9 +136,9 @@
                       ; :width "360px"
                       ; :height "320px"
                       :anchor "top center")
-		(cal))
+		(calendarwidget))
 
-(defwindow fgcalendar
+(defwindow fgcalendarwindow
   :monitor 3
   :stacking "fg"
   :geometry (geometry :x "0"
@@ -140,7 +146,7 @@
                       ; :width "360px"
                       ; :height "320px"
                       :anchor "top center")
-		(calhoverlost))
+		(calendarhoverlostwidget))
 
 
 ;; disk
@@ -148,24 +154,53 @@
 (defpoll USEDDISKSSD :interval "1m" `scripts/calcdiskusage.sh --ssd`)
 (defpoll USEDDISKNAS :interval "1m" `scripts/calcdiskusage.sh --nas`)
 
-(defwidget diskusage [drive circleclass]
-	(box :class "res_box"
-		(box :class "res_circle" :orientation "h" :valign "center" :halign "center"
-				(circular-progress :class circleclass :start-at 75 :value drive :thickness 12
-						(label :class "res_circle_small" :text "test")))))
+(defwidget diskusagewidget [driveusage circleclass]
+	; (box :orientation "v" :spacing 10 :space-evenly false
+	; (box :class "res_box" :orientation "v" :spacing 10 :space-evenly false
+		(box :class "res_circle"
+				(circular-progress :class circleclass :start-at 75 :value driveusage :thickness 8
+						(label :class "res_circle_small" :text "${driveusage}%"))))
 
-(defwidget diskpanel []
+(defwidget drivenamewidget [drivetype]
+		(label :class "drive_type" :text drivetype :halign "center")) ; fill makes the element the same as its...parent? or sibling?
+
+(defwidget driveinfowidget [driveusage drivetype circleclass]
+		(box :class "res_box"
+				(box :orientation "v" :spacing 10 :space-evenly false
+				(diskusagewidget :driveusage driveusage :circleclass circleclass)
+				(drivenamewidget :drivetype drivetype))))
+
+(defwidget diskpanelwidget []
 		(centerbox :class "res_panel" :orientation "h"
-				(diskusage :drive USEDDISKMAIN :circleclass "res_main")
-				(diskusage :drive USEDDISKSSD :circleclass "res_ssd")
-				(diskusage :drive USEDDISKNAS :circleclass "res_nas")))
+				(driveinfowidget :driveusage USEDDISKMAIN :drivetype "Main" :circleclass "res_main_disk")
+				(driveinfowidget :driveusage USEDDISKSSD :drivetype "SATA" :circleclass "res_ssd_disk")
+				(driveinfowidget :driveusage USEDDISKNAS :drivetype "NAS" :circleclass "res_nas_disk")))
 
-(defwindow disk
+(defwindow diskwindow
 		:monitor 3
   :stacking "bg"
-  :geometry (geometry :x "5%"
-                      :y "5%"
+  :geometry (geometry :x "2%"
+                      :y "1%"
                       ; :width "360px"
                       ; :height "320px"
                       :anchor "top right")
-		(diskpanel))
+		(diskpanelwidget))
+
+
+;; desktop widgets
+
+(defwidget combowidget []
+		(centerbox :valign "center"
+				(calendarwidget)
+				(appsinnerwidget)
+				(diskpanelwidget)))
+
+(defwindow combowindow
+:monitor 2
+  :stacking "fg"
+  :geometry (geometry :x "0%"
+                      :y "2%"
+                      ; :width "360px"
+                      ; :height "320px"
+                      :anchor "top center")
+  (combowidget))
