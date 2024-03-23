@@ -120,6 +120,7 @@
 ;; @@@@@@@@@@@@@@@@@@@@@@@
 (defpoll time :interval "10s"
   "date '+%I:%M %p - %a, %b %d'")
+; the icon color is based on whether hyprshade is auto (orange) or off (blue), not if the bluelight filter is on or off.
 (defpoll filterindicator :interval "10s" "scripts/bluelightfilterdetection.sh --getcolor")
 
 (defwidget clockiconwidget [icon iconcolor]
