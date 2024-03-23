@@ -6,7 +6,7 @@ $mainboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
 
 $ispixelstyle: true;
 @if $ispixelstyle == true {
-    $fontfamilies: "monogram extended", "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
+    $fontfamilies: "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
     $mainborderradius: 0rem;
     $mainfontsize: 16px;
     $mainboxshadow: 0.15rem 0.15rem 0 0 $mainboxshadowcolor, 0.15rem 0.15rem 0 0 $mainboxshadowcolor;
@@ -173,6 +173,7 @@ button:hover {
 #custom-pacman {
     background-color: #ffee70;
     padding-right: 1rem;
+    padding-left: 0.5rem;
 }
 
 #clock {

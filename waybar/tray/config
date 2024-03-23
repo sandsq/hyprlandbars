@@ -63,11 +63,11 @@
     "cpu": {
         "format": "<b>{usage}%</b> ",
         "tooltip": false,
-        // "on-click": "conky -c /home/sand/Dropbox/linux/conky/conky.config"
+        "on-click": "konsole -e procs sand --sortd cpu --watch-interval 5"
     },
     "memory": {
         "format": "<b>{}%</b> ", // <span font=\"FontAwesome\"></span>",
-        // "on-click": "conky -c /home/sand/Dropbox/linux/conky/conky.config"
+        "on-click": "konsole -e procs sand --sortd mem --watch-interval 5"
     },
     "disk": {
         "interval": 600,
@@ -109,7 +109,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        // doesn't always update audio source but eh
+        "on-click": "/home/sand/Dropbox/linux/bars/waybar/tray/switchaudio.sh"
     },
     "custom/power": {
         "format":"⏻",

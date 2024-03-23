@@ -8,6 +8,8 @@ cache_weather_degree=${cache_dir}/weather-degree
 cache_weather_quote=${cache_dir}/weather-quote
 cache_weather_hex=${cache_dir}/weather-hex
 cache_weather_icon=${cache_dir}/weather-icon
+cache_weather_sunrise=${cache_dir}/weather-sunrise
+cache_weather_sunset=${cache_dir}/weather-sunset
 
 ## Weather data
 KEY=$WEATHERKEY
@@ -29,6 +31,10 @@ get_weather_data() {
 		weather_temp=`echo "$weather" | jq ".main.temp" | cut -d "." -f 1`
 		weather_icon_code=`echo "$weather" | jq -r ".weather[].icon" | head -1`
 		weather_description=`echo "$weather" | jq -r ".weather[].description" | head -1 | sed -e "s/\b\(.\)/\u\1/g"`
+		weather_sunrise_epoch=`echo $weather | jq -r ".sys.sunrise"`
+		weather_sunset_epoch=`echo $weather | jq -r ".sys.sunset"`
+		weather_sunrise=`date -d @$weather_sunrise_epoch "+%I:%M %p"`
+		weather_sunset=`date -d @$weather_sunset_epoch "+%I:%M %p"`
 
 		#Big long if statement of doom
 		if [ "$weather_icon_code" == "50d"  ]; then
@@ -37,7 +43,7 @@ get_weather_data() {
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "50n"  ]; then
 			weather_icon=" "
-			weather_quote="Forecast says it's a misty night... \ndon't go anywhere tonight or you might get lost..."
+			weather_quote="Forecast says it's a misty night... \ntake care not to get lost..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "01d"  ]; then
 			weather_icon=" "
@@ -60,7 +66,7 @@ get_weather_data() {
 			weather_quote="It's cloudy, sort of gloomy... \nyou'd better get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "03n"  ]; then
-			weather_icon=" "
+			weather_icon=" " #" "
 			weather_quote="It's a cloudy night... \nhow about some hot chocolate and a warm bed?"
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04d"  ]; then
@@ -68,7 +74,7 @@ get_weather_data() {
 			weather_quote="It's cloudy, sort of gloomy... \nyou'd better get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04n"  ]; then
-			weather_icon=" "
+			weather_icon=" " #" "
 			weather_quote="It's a cloudy night... \nhow about some hot chocolate and a warm bed?"
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "09d"  ]; then
@@ -101,7 +107,7 @@ get_weather_data() {
 			weather_hex="#e3e6fc"
 		elif [ "$weather_icon_code" == "13n"  ]; then
 			weather_icon=" "
-			weather_quote="It's gonna snow tonight... \nmake sure you get up early tomorrow to see the sights..."
+			weather_quote="It's gonna snow tonight... \nmake sure you get up early to see the sights..."
 			weather_hex="#e3e6fc"
 		elif [ "$weather_icon_code" == "40d"  ]; then
 			weather_icon=" "
@@ -109,7 +115,7 @@ get_weather_data() {
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "40n"  ]; then
 			weather_icon=" "
-			weather_quote="Forecast says it's a misty night... \ndon't go anywhere tonight or you might get lost..."
+			weather_quote="Forecast says it's a misty night... \ntake care not to get lost..."
 			weather_hex="#84afdb"
 		else 
 			weather_icon=" "
@@ -121,12 +127,17 @@ get_weather_data() {
 		echo "$weather_temp""°C" > ${cache_weather_degree}
 		echo -e "$weather_quote" > ${cache_weather_quote}
 		echo "$weather_hex" > ${cache_weather_hex}
+		echo "$weather_sunrise" > ${cache_weather_sunrise}
+		echo "$weather_sunset" > ${cache_weather_sunset}
+
 	else
 		echo "Weather Unavailable" > ${cache_weather_stat}
 		echo " " > ${cache_weather_icon}
 		echo -e "Ah well, no weather huh? \nEven if there's no weather, it's gonna be a great day!" > ${cache_weather_quote}
 		echo "-" > ${cache_weather_degree}
-		echo "#adadff" > ${tcache_weather_hex}
+		echo "#adadff" > ${cache_weather_hex}
+		echo "-" > ${cache_weather_sunrise}
+		echo "-" > ${cache_weather_sunset}
 	fi
 }
 
@@ -145,4 +156,8 @@ elif [[ "$1" == "--quote" ]]; then
 	cat ${cache_weather_quote} | head -n1
 elif [[ "$1" == "--quote2" ]]; then
 	cat ${cache_weather_quote} | tail -n1
+elif [[ "$1" == "--sunrise" ]]; then
+	cat ${cache_weather_sunrise}
+elif [[ "$1" == "--sunset" ]]; then
+	cat ${cache_weather_sunset}
 fi

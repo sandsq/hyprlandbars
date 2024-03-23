@@ -1,6 +1,7 @@
 ;; @@@@@@@@@@@
 ;; things to mess around with
 ;; color chooser for fast color choosing
+;; widget for detecting if hyprshade bluelight filter is on
 
 ;; @@@@@@@@
 ;; notes
@@ -8,13 +9,15 @@
 
 
 ;; Weather
-; (defpoll RUN :interval "15m" `scripts/weather_info --getdata`)
-(defvar RUN "test")
+(defpoll RUN :interval "5m" `scripts/weather_info --getdata`)
+; (defvar RUN "test")
 (defpoll ICON :interval "5m" `scripts/weather_info --icon`)
 (defpoll TEMP :interval "5m" `scripts/weather_info --temp`)
 (defpoll HEX :interval "5m" `scripts/weather_info --hex`)
 (defpoll QUOTE :interval "5m" `scripts/weather_info --quote`)
 (defpoll QUOTE2 :interval "5m" `scripts/weather_info --quote2`)
+(defpoll SUNRISE :interval "60m" `scripts/weather_info --sunrise`)
+(defpoll SUNSET :interval "60m" `scripts/weather_info --sunset`)
 
 (defwidget weatherwidget [] 
 			(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
@@ -50,6 +53,27 @@
 											:stacking "fg"
 			(weathertogetherwidget))
 
+(defwidget suntimeicon [icon]
+		(label :class "suntimeicon" :text icon))
+
+(defwidget suntimewidget []
+		(box :class "suntime" :orientation "h" :spacing 0 :space-evenly false
+				(suntimeicon :icon "󰖜")
+				(label :class "suntimetext" :text "${SUNRISE}")
+				(label :class "suntimetext" :text "${SUNSET}")
+				(suntimeicon :icon "󰖛")))
+
+(defwindow suntimewindow
+											:monitor 3
+											:geometry (geometry :x "28%"
+																															:y "1%"
+																															; :width "100px"
+																															; :height "24px"
+																															:anchor "top left")
+											:stacking "bg"
+			(suntimewidget))
+
+
 ;; @@@@@@@@@@@@@@@@@@@@@@@
 ;; Apps
 ;; @@@@@@@@@@@@@@@@@@@@@@@
@@ -80,8 +104,8 @@
 
 (defwindow appstabletwindow
            :monitor 2
-           :geometry (geometry :x "41%"
-                               :y "46.5%"
+           :geometry (geometry :x "40.7%"
+                               :y "46.3%"
                                ; :width "300px"
                                ; :height "80px"
                                :anchor "top left")
@@ -91,22 +115,31 @@
            ; :wm-ignore false
 			(appsinnerwidget))
 
+;; @@@@@@@@@@@@@@@@@@@@@@@
 ;; Time
+;; @@@@@@@@@@@@@@@@@@@@@@@
 (defpoll time :interval "10s"
   "date '+%I:%M %p - %a, %b %d'")
+(defpoll filterindicator :interval "10s" "scripts/bluelightfilterdetection.sh --getcolor")
 
-(defwidget clockiconwidget [icon]
-			(label :class "clockicon" :text icon))
+(defwidget clockiconwidget [icon iconcolor]
+		(box
+			; (color-chooser)
+			(label :class "clockicon" :style "color: ${iconcolor};" :text icon)))
 
 (defwidget timeboxwidget []
 	  (centerbox :class "clockbox" :orientation "h" :halign "center" 
-	  	(clockiconwidget :icon "") ; maybe would be interesting to change icon depending on time of day
+	  	(eventbox
+	  			:onclick "scripts/bluelightfilterdetection.sh --toggle"
+	  			(clockiconwidget :icon "" :iconcolor filterindicator)) ; maybe would be interesting to change icon depending on time of day
 	   (label :class "clocktext" :text "${time}")
-	   (eventbox :onhover "eww open fgcalendarwindow --config ${EWW_CONFIG_DIR}" (clockiconwidget :icon ""))
+	   (eventbox 
+	   		:onhover "eww open fgcalendarwindow --config ${EWW_CONFIG_DIR}" 
+	   		(clockiconwidget :icon "" :iconcolor "black"))
 	   ))
 
 (defwidget timeboxhoverwidget []
-			(eventbox	:onhover "eww open fgcalendarwindow --config ${EWW_CONFIG_DIR}"
+			(eventbox	:onhover "eww open fgcalendarwindow --config ${EWW_CONFIG_DIR}" 
 			(timeboxwidget)))
 
 (defwindow clockwindow
@@ -172,9 +205,9 @@
 
 (defwidget diskpanelwidget []
 		(centerbox :class "res_panel" :orientation "h"
-				(driveinfowidget :driveusage USEDDISKMAIN :drivetype "Main" :circleclass "res_main_disk")
-				(driveinfowidget :driveusage USEDDISKSSD :drivetype "SATA" :circleclass "res_ssd_disk")
-				(driveinfowidget :driveusage USEDDISKNAS :drivetype "NAS" :circleclass "res_nas_disk")))
+				(driveinfowidget :driveusage USEDDISKMAIN :drivetype " Main" :circleclass "res_main_disk")
+				(driveinfowidget :driveusage USEDDISKSSD :drivetype " SATA" :circleclass "res_ssd_disk")
+				(driveinfowidget :driveusage "${USEDDISKNAS}":drivetype "  NAS" :circleclass "res_nas_disk")))
 
 (defwindow diskwindow
 		:monitor 3

@@ -2,7 +2,7 @@ $fontfamilies: "FontAwesome", "Ubuntu Mono", monospace;
 $mainboxshadowcolor: rgba(10, 51, 55, 0.7);
 $mainborderradius: 0.4rem;
 $mainfontsize: 15px;
-$mainboxshadow: 0.35rem 0.35rem $mainboxshadowcolor;
+$mainboxshadow: 0.35rem 0.35rem 0 0rem $mainboxshadowcolor;
 $diskboxshadowcolor: rgba(40, 80, 64, 0.70196);
 $diskboxshadow: 0.35rem 0.35rem $diskboxshadowcolor;
 $smallboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
@@ -12,10 +12,10 @@ $darkcreamcolor: #887857;
 
 $ispixelstyle: true;
 @if $ispixelstyle == true {
-	$fontfamilies: "monogram extended", "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
+	$fontfamilies: "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
 	$mainborderradius: 0rem;
-	$mainfontsize: 14px;
-	// $mainboxshadow: 0.35rem 0.35rem 0 0 $mainboxshadowcolor, 0.35rem 0.35rem 0 0 $mainboxshadowcolor;
+	$mainfontsize: 16px;
+	$mainboxshadow: 0.35rem 0.35rem 0 0 $mainboxshadowcolor;
 }
 
 
@@ -92,22 +92,29 @@ $ispixelstyle: true;
 	font-family: Iosevka Nerd Font;
 	font-weight : normal;
 	margin-right: 0.4rem;
+	padding: 0px;
+	margin-bottom: 0px;
 }
 
 .weathertemp {
 	font-weight : bold;
+	padding-top: 1px;
 	// margin : 0px 0px 0px 3px;
 }
 
 .weatherquote {
 	font-weight: bold;
-	margin: 2px 0px;
+	margin: 0px 0px;
+	padding: 0px 0px;
+	padding-top: 1px;
 }
 
 .weatherquote2 {
 	font-weight: bold;
 	margin: 2px 0px;
 	padding-right: 0.3rem;
+	padding-top: 1px;
+	// padding-bottom: 1px;
 }
 
 .hidden {
@@ -117,7 +124,7 @@ $ispixelstyle: true;
 // clock
 .clockbox {
 
-    margin: 0rem 0.2rem 0.2rem 0.2rem;
+    margin: 0rem 0.2rem 0.1rem 0.2rem;
 	padding: 0.1rem 0rem 0.15rem 0rem;
 	// font-size: 15px;
 	background-color: #ebc1e7;
@@ -132,8 +139,9 @@ $ispixelstyle: true;
 
 .clocktext {
     font-weight: bold;
+
     @if $ispixelstyle {
-    	padding-top: 1px;	
+    	padding-top: 3.5px;	
     } @else {
     	padding-bottom: 1px;
     }
@@ -143,6 +151,7 @@ $ispixelstyle: true;
 	font-size: 18px;
 	font-weight: normal;
 	margin: 0 0.8rem;
+	
 }
 
 // calendar
@@ -173,7 +182,28 @@ $ispixelstyle: true;
   font-weight: bold;
 }
 
+.suntime {
+	border-radius: $mainborderradius;
+	border: 0.2rem solid $darkcreamcolor;
+	background-color: $creamcolor;
+	padding: 0 1rem 0 1rem;
+	margin: 0.4rem;
+	
+	box-shadow: $mainboxshadow;
+}
 
+.suntimetext {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0 1rem 0 1.5rem;
+	
+}
+
+.suntimeicon {
+	font-size: 32px;
+	font-weight: bold;
+	// margin: 0 0.5rem;
+}
 
 // @@@@@@@@@@@@@@@
 // disk
@@ -248,7 +278,7 @@ $ispixelstyle: true;
 .drive_type {
 	border: 2px solid $mainboxshadowcolor;
 	padding: 0 0.5rem 0px 0.5rem;
-	margin: 0 0 10px 0;
+	margin: 0 0px 10px 0px;
 	color: $mainboxshadowcolor;
 	font-size: 28px;
 	font-weight: bold;
