@@ -10,3 +10,4 @@ sleep 0.5 && eww open appstabletwindow --config $configfile
 sleep 0.5 && eww open weatherwindow --config $configfile
 sleep 0.5 && eww open diskwindow --config $configfile
 sleep 0.5 && eww open suntimewindow --config $configfile
+sleep 0.5 && eww open infowindow --config $configfile

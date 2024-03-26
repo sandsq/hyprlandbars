@@ -1,14 +1,16 @@
 ;; @@@@@@@@@@@
 ;; things to mess around with
 ;; color chooser for fast color choosing
-;; widget for detecting if hyprshade bluelight filter is on
+;; done widget for detecting if hyprshade bluelight filter is on
+;; user env variable pointing to config path for shell scripts
 
 ;; @@@@@@@@
 ;; notes
 ;; - space-evenly on multiple objects takes the max size and makes every object that size
 
-
+;; @@@@@@@@@@@@@@@@@@@
 ;; Weather
+;; @@@@@@@@@@@@@@@@@@@
 (defpoll RUN :interval "5m" `scripts/weather_info --getdata`)
 ; (defvar RUN "test")
 (defpoll ICON :interval "5m" `scripts/weather_info --icon`)
@@ -46,9 +48,9 @@
 (defwindow weatherwindow
 											:monitor 3
 											:geometry (geometry :x "17.5%"
-																															:y "-32px"
-																															:width "100px"
-																															:height "24px"
+																															:y "-30px"
+																															; :width "100px"
+																															:height "32px"
 																															:anchor "top left")
 											:stacking "fg"
 			(weathertogetherwidget))
@@ -146,17 +148,19 @@
 (defwindow clockwindow
 					:monitor 3
 					:geometry (geometry :x "0"
-																									:y "-32px"
+																									:y "-30px"
 																									; :width "150px"
 																									:height "32px"
 																									:anchor "top center")
 					:stacking "overlay"
 			(timeboxwidget))
 
+;; @@@@@@@@@@@@@@@@@@@
 ;; Calendar
+;; @@@@@@@@@@@@@@@@@@@
 (defwidget calendarwidget []
 		(box :class "calendarbox"
-  		(calendar :halign "center" :valign "center" :class "cal")))
+  		(calendar :halign "center" :valign "center" :class "calendarinner")))
 
 (defwidget calendarhoverlostwidget []
 		(eventbox :onhoverlost "eww close fgcalendarwindow --config ${EWW_CONFIG_DIR}"
@@ -182,8 +186,9 @@
                       :anchor "top center")
 		(calendarhoverlostwidget))
 
-
+;; @@@@@@@@@@@@@@@@@@@
 ;; disk
+;; @@@@@@@@@@@@@@@@@@@
 (defpoll USEDDISKMAIN :interval "1m" `scripts/calcdiskusage.sh`)
 (defpoll USEDDISKSSD :interval "1m" `scripts/calcdiskusage.sh --ssd`)
 (defpoll USEDDISKNAS :interval "1m" `scripts/calcdiskusage.sh --nas`)
@@ -220,21 +225,103 @@
                       :anchor "top right")
 		(diskpanelwidget))
 
+;; @@@@@@@@@@@@@@@@@@@
+; pacman
+;; @@@@@@@@@@@@@@@@@@@
+(defpoll UPDATECOUNT :interval "60m" "checkupdates | wc -l")
+(defwidget pacmanwidget []
+		(eventbox :onclick "scripts/checkupdates.sh &" :class "pacmanbutton"
+		(box :class "infoitembox" :space-evenly false
+						(label :class "pacmantext" :text UPDATECOUNT)
+				(infoiconwidget :icon " " :iconclass "pacmanicon"))))
 
-;; desktop widgets
+;; @@@@@@@@@@@@@@@@@@@
+; Memory
+;; @@@@@@@@@@@@@@@@@@@
 
-(defwidget combowidget []
-		(centerbox :valign "center"
-				(calendarwidget)
-				(appsinnerwidget)
-				(diskpanelwidget)))
+(defwidget memwidget []
+		(eventbox :class "membutton" :onclick "`konsole -e procs sand --sortd mem --watch-interval 5`"
+		(box :class "infoitembox" :space-evenly false
+				(label :class "memtext" :text "${round(EWW_RAM.used_mem_perc, 0)}%")
+				(infoiconwidget :icon "" :iconclass "memicon"))))
 
-(defwindow combowindow
-:monitor 2
-  :stacking "fg"
-  :geometry (geometry :x "0%"
-                      :y "2%"
-                      ; :width "360px"
-                      ; :height "320px"
-                      :anchor "top center")
-  (combowidget))
+
+;; @@@@@@@@@@@@@@@@@@@
+; CPU
+;; @@@@@@@@@@@@@@@@@@@
+(defpoll CPUUSAGE :interval "5s" "scripts/addleadingzero.sh --cpu")
+(defwidget cpuwidget []
+		(eventbox :class "cpubutton" :onclick "`konsole -e procs sand --sortd cpu --watch-interval 5`"
+		(box :class "infoitembox" :space-evenly false
+				(label :class "cputext" :width 25 :text "${round(EWW_CPU.avg, 0)}%"); "${CPUUSAGE}%")
+				(infoiconwidget :icon " " :iconclass "cpuicon"))))
+
+;; @@@@@@@@@@@@@@@@@@@
+; Temps
+;; @@@@@@@@@@@@@@@@@@@
+(defwidget cputempwidget []
+		(box :class "infoitembox" :space-evenly false
+			(label :class "cputemptext" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°C")
+			(infoiconwidget :icon "" :iconclass "cputempicon")))
+
+;; @@@@@@@@@@@@@@@@@@@
+; Controller
+;; @@@@@@@@@@@@@@@@@@@
+(defpoll CONTROLLERBATTERY :interval "3m" "scripts/batterycheck.sh")
+(defwidget controllerwidget []
+		(box :class "infoitembox" :space-evenly false
+			(label :class "controllertext" :text "${CONTROLLERBATTERY}%")
+			(infoiconwidget :icon " " :iconclass "controllericon")))
+
+
+;; @@@@@@@@@@@@@@@@@@@
+; audio
+;; @@@@@@@@@@@@@@@@@@@
+(defpoll AUDIOPERC :interval "10m" "pamixer --get-volume")
+(defpoll AUDIOICON :interval "10m" "scripts/switchaudio.sh --icon")
+(defwidget audiowidget []
+		(eventbox :onclick "scripts/switchaudio.sh" :onscroll "scripts/switchaudio.sh {}" :class "audiobutton"
+				(box :class "infoitembox" :space-evenly false
+						(label :text "${AUDIOPERC}%" :class "audiotext")
+				(infoiconwidget :icon AUDIOICON :iconclass "audioicon"))))
+
+;; @@@@@@@@@@@@@@@@@@@
+; spotify
+;; @@@@@@@@@@@@@@@@@@@
+
+(deflisten SPOTIFYINFO :initial "" `/usr/bin/python scripts/mediaplayer.py --player spotify`)
+; (defvar SPOTIFYINFO "hello")
+(defwidget spotifywidget []
+		(eventbox :onclick "playerctl -p spotify play-pause" :onscroll "`[[ {} == \"up\" ]] && playerctl -p spotify previous || playerctl -p spotify next`" :class "spotifybutton"
+				(centerbox :class "spotifybox"
+						(infoiconwidget :icon "${SPOTIFYINFO.icon}" :iconclass "spotifyplaypauseicon")
+						(label :class "spotifytext" :text "${SPOTIFYINFO.text}")
+						(infoiconwidget :icon "" :iconclass "spotifyicon"))))
+
+;; @@@@@@@@@@@@@@@@@@@
+; Info
+;; @@@@@@@@@@@@@@@@@@@
+
+(defwidget infoiconwidget [icon iconclass]
+		(label :class iconclass :text icon))
+
+(defwidget infowidget []
+		(box :class "infobox" :space-evenly false :orientation "h" :spacing 0
+				(spotifywidget)
+				(audiowidget)
+				(controllerwidget)
+				(cputempwidget)
+				(cpuwidget)
+				(memwidget)
+				(pacmanwidget)))
+
+(defwindow infowindow
+		:monitor 3
+		:stacking "fg"
+		:geometry (geometry :x "5%"
+                      :y "-30px"
+                      :height "30px"
+                      ; :width "300px"
+                      :anchor "top right")
+		(infowidget))
+

@@ -79,7 +79,7 @@ get_weather_data() {
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "09d"  ]; then
 			weather_icon=" "
-			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch as the rain falls..."
+			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch the rain fall..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "09n"  ]; then
 			weather_icon=" "
@@ -87,7 +87,7 @@ get_weather_data() {
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10d"  ]; then
 			weather_icon=" "
-			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch as the rain falls..."
+			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch the rain fall..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10n"  ]; then
 			weather_icon=" "

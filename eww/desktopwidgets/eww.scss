@@ -22,7 +22,8 @@ $issproutlandscolor: true;
 }
 
 
-$mainborderradius: 0.5rem;
+$mainborderradius: 0.6rem;
+$borderradiusstyle: 0 $mainborderradius 0 $mainborderradius;
 $mainfontsize: 15px;
 $mainboxshadow: 0.35rem 0.35rem 0 0rem $mainboxshadowcolor;
 $diskboxshadow: 0.35rem 0.35rem $diskboxshadowcolor;
@@ -38,6 +39,20 @@ $ispixelstyle: false;
 	$mainboxshadow: 0.35rem 0.35rem 0 0 $mainboxshadowcolor;
 }
 
+$infoboxcolor: rgb(146.94, 230.06, 198.28, 0.7);
+$infoboxdividercolor: #18684f;
+$wscolor: #626169;
+$paccolor: #503c30; 
+$ramcolor: #811e20;
+$cpucolor: #27525A;
+$tempcolor: #9f3b00;
+$controllercolor: #182d68;
+$audiocolor: #172016;
+$spotifycolor: #114f28;
+$barbuttonhover: rgb(183.28, 231.1, 212.82);
+
+$infobarpadding: 0 10px 0 10px;
+
 
 *{
 	all: unset;
@@ -49,7 +64,7 @@ $ispixelstyle: false;
 .dockbox {
 	background-color: $creamcoloropac;
 	border: 0.2rem solid $darkcreamcolor;
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; // $mainborderradius;
 	margin: 0.4rem;
 	padding: 1rem;
 
@@ -75,7 +90,7 @@ $ispixelstyle: false;
 // @@@@@@@@@@@
 // appicon should have equal padding around since that's what shows up when hovered
 .appicon {
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; //$mainborderradius;
 	
 	padding: 0.5rem;
   background-repeat: no-repeat;
@@ -100,7 +115,7 @@ $ispixelstyle: false;
 	// font-size: 15px;
 	background-color: $weathercolor;
 	border: 2px solid black;
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; // $mainborderradius;
 	box-shadow: $smallboxshadow;
 
 	-moz-background-clip: padding; 
@@ -131,9 +146,9 @@ $ispixelstyle: false;
 
 .weatherquote2 {
 	font-weight: bold;
-	margin: 2px 0px;
+	margin: 0px 0px 3px 0;
 	padding-right: 0.3rem;
-	padding-top: 1px;
+	padding-top: 2px;
 	// padding-bottom: 1px;
 }
 
@@ -141,15 +156,17 @@ $ispixelstyle: false;
 	color: rgba(0, 0, 0, 1)
 }
 
+// @@@@@@@@@@@@@@
 // clock
+// @@@@@@@@@@@@@@
 .clockbox {
 
-    margin: 0rem 0.2rem 0.2rem 0.2rem;
-	padding: 0.1rem 0rem 0.15rem 0rem;
+  margin: 0rem 0.2rem 0.2rem 0.2rem;
 	// font-size: 15px;
 	background-color: $clockcolor;
 	border: 2px solid black;
-	border-radius: $mainborderradius;
+	// border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle;
 	box-shadow: $smallboxshadow;
 
 	-moz-background-clip: padding; 
@@ -157,18 +174,20 @@ $ispixelstyle: false;
 	background-clip: padding-box;
 }
 
+
 .clocktext {
     font-weight: bold;
 
     @if $ispixelstyle {
     	padding-top: 3.5px;	
     } @else {
-    	padding-bottom: 1px;
+    	padding-top: 0px;
+    	padding-bottom: 0px;
     }
 }
 
 .clockicon {
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: normal;
 	margin: 0 0.8rem;
 	
@@ -176,7 +195,7 @@ $ispixelstyle: false;
 
 // calendar
 .calendarbox {
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; // $mainborderradius;
 	border: 0.2rem solid $darkcreamcolor;
  	
  	padding: 1rem;
@@ -191,19 +210,19 @@ $ispixelstyle: false;
 	background-clip: padding-box;
 }
 
-.cal {
+.calendarinner {
   color: #25605e;
   padding: 8px;
   padding-bottom: 3px;
 
   // background: $creamcolor;
-  border-radius: $mainborderradius;
+  // border-radius: $mainborderradius;
   font-size: 20px;
   font-weight: bold;
 }
 
 .suntime {
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; // $mainborderradius;
 	border: 0.15rem solid black;
 	background-color: rgb(234, 183, 127, 0.6);
 	padding: 0 1rem 0 1rem;
@@ -238,7 +257,7 @@ $ispixelstyle: false;
 	background-color: $creamcoloropac;
 	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	margin: 0.4rem;
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; // $mainborderradius;
 	border: 0.2rem solid $darkcreamcolor;
 
 	box-shadow: $mainboxshadow;
@@ -254,7 +273,7 @@ $ispixelstyle: false;
 .res_box {
 	background-color: $creamcoloropac;
 	border: 0.2rem solid $darkcreamcolor;
-	border-radius: $mainborderradius;
+	border-radius: $borderradiusstyle; // $mainborderradius;
 	padding: 14px 18px 0px 18px;
 	margin: 0.8rem;
 
@@ -311,3 +330,182 @@ $ispixelstyle: false;
 
 	box-shadow: $smallboxshadow;
 }
+
+// @@@@@@@@@@@@@@@@@@@
+// info
+// @@@@@@@@@@@@@@@@@@@
+.infobox {
+	border-radius: $borderradiusstyle;
+	box-shadow: $smallboxshadow;
+	margin: 0 0.2rem 0.2rem 0;
+	background-color: $infoboxcolor;
+	border: 2px solid black;
+}
+
+.infoitembox {
+	// border: 0 solid black;
+	border-left: 2px dotted $infoboxdividercolor;
+	padding: $infobarpadding;
+}
+
+.genericicon {
+	padding: 0;
+	margin: 0;
+}
+
+
+// @@@@@@@@@@@@@@@@@@@
+// pacman
+// @@@@@@@@@@@@@@@@@@@
+.pacmantext {
+	font-weight: bold;
+	color: $paccolor;
+	// padding: 0 0 0 4px;
+}
+
+.pacmanicon {
+	font-weight: bold;
+	color: $paccolor;
+	padding: 0px 0px 0 4px;
+}
+
+.pacmanbutton:hover {
+	border-radius: 0 $mainborderradius 0 0;
+	background-color: $barbuttonhover;
+}
+
+
+// @@@@@@@@@@@@@@@@@@@
+// mem
+// @@@@@@@@@@@@@@@@@@@
+.memtext {
+	font-weight: bold;
+	color: $ramcolor;
+	// padding: 0 0 0 4px;
+}
+
+.memicon {
+	font-weight: bold;
+	color: $ramcolor;
+	padding: 1px 0px 0 4px;
+}
+
+.membutton:hover {
+	background-color: $barbuttonhover;
+}
+
+
+// @@@@@@@@@@@@@@@@@@@
+// cpu
+// @@@@@@@@@@@@@@@@@@@
+.cputext {
+	font-weight: bold;
+	color: $cpucolor;
+}
+
+.cpuicon {
+	font-weight: bold;
+	color: $cpucolor;
+	padding: 1px 0px 0 0px;
+}
+
+.cpubutton:hover {
+	background-color: $barbuttonhover;
+}
+
+// @@@@@@@@@@@@@@@@@@@
+// temps
+// @@@@@@@@@@@@@@@@@@@
+.cputemptext {
+	font-weight: bold;
+	color: $tempcolor;
+	// padding: 0 0 0 4px;
+}
+
+.cputempicon {
+	font-weight: bold;
+	color: $tempcolor;
+	padding: 1px 0px 0 4px;
+}
+
+// @@@@@@@@@@@@@@@@@@@
+// controller
+// @@@@@@@@@@@@@@@@@@@
+.controllertext {
+	font-weight: bold;
+	color: $controllercolor;
+	// padding: 0 0 0 4px;
+}
+
+.controllericon {
+	font-weight: bold;
+	color: $controllercolor;
+	padding: 2px 0px 0 4px;
+}
+
+// @@@@@@@@@@@@@@@@@@@
+// audio
+// @@@@@@@@@@@@@@@@@@@
+.audiotext {
+	font-weight: bold;
+	color: $audiocolor;
+	// padding: 0 0 0 4px;
+}
+
+.audioicon {
+	font-weight: bold;
+	color: $audiocolor;
+	padding-left: 4px;
+}
+
+.audiobutton {
+
+}
+
+.audiobutton:hover {
+	background-color: $barbuttonhover;
+}
+
+// @@@@@@@@@@@@@@@@@@@
+// spotify
+// @@@@@@@@@@@@@@@@@@@
+
+.spotifybox {
+	border: 0px none black;
+}
+
+.spotifytext {
+	font-weight: bold;
+	color: $spotifycolor;
+}
+
+.spotifyplaypauseicon {
+	// padding: 2px 5px 0px 5px;
+	padding: 2px 5px 0 0px;
+	color: $spotifycolor;
+}
+
+.spotifyicon {
+	// padding: 1px 5px 0px 5px;
+	padding: 2px 0px 0 5px;
+	color: $spotifycolor;
+}
+
+.spotifybox {	
+	padding: $infobarpadding;
+}
+
+.spotifybutton {
+	
+}
+
+.spotifybutton:hover {
+	background-color: $barbuttonhover;
+	border-radius: 0 0 0 $mainborderradius;
+}
+
+
+
+
+
+

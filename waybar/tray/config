@@ -3,7 +3,7 @@
     "layer": "top", // Waybar at top layer
     // "reload_style_on_change": true, // only works on style changes
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "height": 24, // Waybar height (to be removed for auto height)
+    // "height": 28, // Waybar height (to be removed for auto height)
     "margin-top": 4,
     // "margin-bottom": -4,
     "output": ["DP-3"],
@@ -15,7 +15,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": [],//["clock", ],
-    "modules-right": ["custom/spotify", "pulseaudio", "custom/controller", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
+    "modules-right": ["tray"], //["custom/spotify", "pulseaudio", "custom/controller", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
         "show_special": true,
