@@ -1,15 +1,36 @@
 $fontfamilies: "FontAwesome", "Ubuntu Mono", monospace;
 $mainboxshadowcolor: rgba(10, 51, 55, 0.7);
-$mainborderradius: 0.4rem;
+$mainborderradius: 0.5rem;
 $mainfontsize: 15px;
 $mainboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
 
-$ispixelstyle: true;
+$wscolor: #324a4c;
+$paccolor: #ffee70;
+$ramcolor: #bc7ed5;
+$cpucolor: #5dda92;
+$tempcolor: #f3b773;
+$controllercolor: #8d728d;
+$audiocolor: #DAF7A6;
+$spotifycolor: rgba(247, 237, 225, 0.15);
+
+$ispixelstyle: false;
 @if $ispixelstyle == true {
     $fontfamilies: "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
     $mainborderradius: 0rem;
     $mainfontsize: 16px;
     $mainboxshadow: 0.15rem 0.15rem 0 0 $mainboxshadowcolor, 0.15rem 0.15rem 0 0 $mainboxshadowcolor;
+}
+
+$issproutlandscolor: true;
+@if $issproutlandscolor == true {
+    $wscolor: #626169;
+    $paccolor: #E2D4A4; 
+    $ramcolor: #B87CC9;
+    $cpucolor:#AAD58F;
+    $tempcolor: #F0C99C;
+    $controllercolor: #A59CE9;
+    $audiocolor: rgb(109.82, 151.41, 103.59);
+    $spotifycolor: rgba(247, 237, 225, 0.3);
 }
 
 * {
@@ -26,6 +47,7 @@ $ispixelstyle: true;
 #pulseaudio,
 #temperature,
 #custom-colorpicker,
+#custom-controller,
 #custom-pacman,
 #custom-spotify {
     box-shadow: 0.15rem 0.15rem $mainboxshadowcolor;
@@ -46,7 +68,7 @@ $ispixelstyle: true;
 
 #tray,
 #workspaces {
-    background-color: #324a4c;
+    background-color: $wscolor;
     box-shadow: 0.15rem 0.15rem $mainboxshadowcolor; // rgba(89, 74, 56, 0.7); 
 /*    #71c5cd;*/
     margin-bottom: 0.2rem;
@@ -61,7 +83,7 @@ $ispixelstyle: true;
 
 #custom-spotify {
 /*    margin-right: 1rem;*/
-    background-color: rgba(247, 237, 225, 0.15);
+    background-color: $spotifycolor;
     padding-left: 0.5rem;
 
 }
@@ -165,13 +187,14 @@ button:hover {
 }
 
 #custom-controller {
-    background-color: #665366;
+    background-color: $controllercolor;
+    padding-right: 0.8rem;
 }
 
 
 
 #custom-pacman {
-    background-color: #ffee70;
+    background-color: $paccolor;
     padding-right: 1rem;
     padding-left: 0.5rem;
 }
@@ -196,14 +219,14 @@ label:focus {
 }
 
 #cpu {
-    background-color: #5dda92;
+    background-color: $cpucolor;
     color: #000000;
     padding-right: 1rem;
 /*    font-weight: bold;*/
 }
 
 #memory {
-    background-color: #bc7ed5;
+    background-color: $ramcolor;
     padding-right: 0.3rem;
 }
 
@@ -213,7 +236,7 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color:  #DAF7A6;
+    background-color:  $audiocolor;
     color: #000000;
 
 }
@@ -229,7 +252,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f3b773;
+    background-color: $tempcolor;
 /*    font-weight: bold;*/
 }
 

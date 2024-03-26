@@ -1,6 +1,7 @@
 {
     "name": "mainbar",
     "layer": "top", // Waybar at top layer
+    // "reload_style_on_change": true, // only works on style changes
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 24, // Waybar height (to be removed for auto height)
     "margin-top": 4,
@@ -14,7 +15,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": [],//["clock", ],
-    "modules-right": ["custom/spotify", "pulseaudio", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
+    "modules-right": ["custom/spotify", "pulseaudio", "custom/controller", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
         "show_special": true,
@@ -52,13 +53,13 @@
         // "format-alt": "{:%Y-%m-%d}"
     },
     "custom/colorpicker": {
-        "on-click": "sleep 0.5 && hyprpicker -a",
+        "on-click": "sleep 0.1 && hyprpicker -az",
         "format": ""
     },
     "custom/controller": {
         "interval": 300,
         "exec": "$HOME/Dropbox/linux/batterycheck.sh",
-        "format": "{}% "
+        "format": "<b>{}%</b> "
     },
     "cpu": {
         "format": "<b>{usage}%</b> ",
@@ -94,10 +95,10 @@
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": "<b>{volume}%</b> {icon} {format_source}",
+        "format": "<b>{volume}%</b> {icon}", // {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "", // {format_source}",
         "format-source": "<b>{volume}%</b> ",
         "format-source-muted": "",
         "format-icons": {
@@ -119,7 +120,7 @@
    },
    "custom/pacman": {
         "format": "<b>{}</b> ",
-        "interval": 7200, // every two hour
+        "interval": 3600, // every hour
         "exec": "checkupdates | wc -l",
         // "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
         "exec-if": "exit 0", // always run; consider advanced run conditions

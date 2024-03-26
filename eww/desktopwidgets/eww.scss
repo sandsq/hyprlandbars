@@ -1,16 +1,36 @@
 $fontfamilies: "FontAwesome", "Ubuntu Mono", monospace;
+
 $mainboxshadowcolor: rgba(10, 51, 55, 0.7);
-$mainborderradius: 0.4rem;
+$diskboxshadowcolor: rgba(40, 80, 64, 0.70196);
+
+$creamcolor: rgb(247, 237, 225);
+$creamcoloropac: rgb(247, 237, 225, 0.7);
+$darkcreamcolor: #887857;
+
+$clockcolor: #ebc1e7;
+$weathercolor: rgba(247, 237, 225, 0.15);
+
+
+$issproutlandscolor: true;
+@if $issproutlandscolor == true {
+	// $mainboxshadowcolor: rgb(62.742, 71.813, 128.51, 0.7);
+	// $diskboxshadowcolor: rgb(59.963, 67.537, 67.537, 0.7);
+	// $creamcolor: rgb(241, 232, 173, 0.7);
+	// $darkcreamcolor: #765C61;
+	$clockcolor: #81a5be;
+	$weathercolor: rgb(248, 208, 191, 0.4);
+}
+
+
+$mainborderradius: 0.5rem;
 $mainfontsize: 15px;
 $mainboxshadow: 0.35rem 0.35rem 0 0rem $mainboxshadowcolor;
-$diskboxshadowcolor: rgba(40, 80, 64, 0.70196);
 $diskboxshadow: 0.35rem 0.35rem $diskboxshadowcolor;
 $smallboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
 
-$creamcolor: #f7ede1;
-$darkcreamcolor: #887857;
 
-$ispixelstyle: true;
+
+$ispixelstyle: false;
 @if $ispixelstyle == true {
 	$fontfamilies: "Terminus", "FontAwesome", "Ubuntu Mono", monospace;
 	$mainborderradius: 0rem;
@@ -27,7 +47,7 @@ $ispixelstyle: true;
 }
 
 .dockbox {
-	background-color: #f7ede1;
+	background-color: $creamcoloropac;
 	border: 0.2rem solid $darkcreamcolor;
 	border-radius: $mainborderradius;
 	margin: 0.4rem;
@@ -78,7 +98,7 @@ $ispixelstyle: true;
 	margin: 0rem 0.2rem 0.2rem 0rem;
 	padding: 0.25rem 0.2rem 0.25rem 0.5rem;
 	// font-size: 15px;
-	background-color: rgba(247, 237, 225, 0.15);
+	background-color: $weathercolor;
 	border: 2px solid black;
 	border-radius: $mainborderradius;
 	box-shadow: $smallboxshadow;
@@ -124,10 +144,10 @@ $ispixelstyle: true;
 // clock
 .clockbox {
 
-    margin: 0rem 0.2rem 0.1rem 0.2rem;
+    margin: 0rem 0.2rem 0.2rem 0.2rem;
 	padding: 0.1rem 0rem 0.15rem 0rem;
 	// font-size: 15px;
-	background-color: #ebc1e7;
+	background-color: $clockcolor;
 	border: 2px solid black;
 	border-radius: $mainborderradius;
 	box-shadow: $smallboxshadow;
@@ -160,7 +180,7 @@ $ispixelstyle: true;
 	border: 0.2rem solid $darkcreamcolor;
  	
  	padding: 1rem;
- 	background: #f7ede1;
+ 	background: $creamcoloropac;
 
  	margin: 0.4rem;
 
@@ -176,7 +196,7 @@ $ispixelstyle: true;
   padding: 8px;
   padding-bottom: 3px;
 
-  background: #f7ede1;
+  // background: $creamcolor;
   border-radius: $mainborderradius;
   font-size: 20px;
   font-weight: bold;
@@ -184,8 +204,8 @@ $ispixelstyle: true;
 
 .suntime {
 	border-radius: $mainborderradius;
-	border: 0.2rem solid $darkcreamcolor;
-	background-color: $creamcolor;
+	border: 0.15rem solid black;
+	background-color: rgb(234, 183, 127, 0.6);
 	padding: 0 1rem 0 1rem;
 	margin: 0.4rem;
 	
@@ -205,11 +225,17 @@ $ispixelstyle: true;
 	// margin: 0 0.5rem;
 }
 
+.suntimeicon2 {
+	font-size: 32px;
+	font-weight: bold;
+	margin-right: 0.7rem;
+}
+
 // @@@@@@@@@@@@@@@
 // disk
 // @@@@@@@@@@@@@@@
 .res_panel {
-	background-color: #F0E9E1;
+	background-color: $creamcoloropac;
 	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	margin: 0.4rem;
 	border-radius: $mainborderradius;
@@ -226,7 +252,7 @@ $ispixelstyle: true;
 }
 
 .res_box {
-	background-color: #eae0d5;
+	background-color: $creamcoloropac;
 	border: 0.2rem solid $darkcreamcolor;
 	border-radius: $mainborderradius;
 	padding: 14px 18px 0px 18px;
@@ -253,7 +279,7 @@ $ispixelstyle: true;
 }
 
 .res_circle_small {
-	background-color: #F5EEE6;
+	background-color: #f5eee6;
 	border: 0px solid #161616;
 	border-radius: 100%;
 	padding: 45px;

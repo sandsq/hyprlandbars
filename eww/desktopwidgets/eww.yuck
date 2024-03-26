@@ -53,19 +53,19 @@
 											:stacking "fg"
 			(weathertogetherwidget))
 
-(defwidget suntimeicon [icon]
-		(label :class "suntimeicon" :text icon))
+(defwidget suntimeicon [icon stclass]
+		(label :class stclass :text icon))
 
 (defwidget suntimewidget []
 		(box :class "suntime" :orientation "h" :spacing 0 :space-evenly false
-				(suntimeicon :icon "󰖜")
+				(suntimeicon :icon "󰖜" :stclass "suntimeicon")
 				(label :class "suntimetext" :text "${SUNRISE}")
 				(label :class "suntimetext" :text "${SUNSET}")
-				(suntimeicon :icon "󰖛")))
+				(suntimeicon :icon "󰖛" :stclass "suntimeicon2")))
 
 (defwindow suntimewindow
 											:monitor 3
-											:geometry (geometry :x "28%"
+											:geometry (geometry :x "17.3%"
 																															:y "1%"
 																															; :width "100px"
 																															; :height "24px"
@@ -121,7 +121,7 @@
 (defpoll time :interval "10s"
   "date '+%I:%M %p - %a, %b %d'")
 ; the icon color is based on whether hyprshade is auto (orange) or off (blue), not if the bluelight filter is on or off.
-(defpoll filterindicator :interval "10s" "scripts/bluelightfilterdetection.sh --getcolor")
+(defpoll filterindicator :interval "1m" "scripts/bluelightfilterdetection.sh --getcolor")
 
 (defwidget clockiconwidget [icon iconcolor]
 		(box
@@ -166,7 +166,7 @@
   :monitor 3
   :stacking "bg"
   :geometry (geometry :x "0"
-                      :y "1%"
+                      :y "0.5%"
                       ; :width "360px"
                       ; :height "320px"
                       :anchor "top center")
@@ -176,7 +176,7 @@
   :monitor 3
   :stacking "fg"
   :geometry (geometry :x "0"
-                      :y "1%"
+                      :y "0.5%"
                       ; :width "360px"
                       ; :height "320px"
                       :anchor "top center")
