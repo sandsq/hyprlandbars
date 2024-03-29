@@ -93,8 +93,8 @@
 
 (defwindow appswindow
            :monitor 3
-           :geometry (geometry :x "2%"
-                               :y "18%"
+           :geometry (geometry :x "4.5%"
+                               :y "20%"
                                ; :width "300px"
                                ; :height "80px"
                                :anchor "top right")
@@ -133,7 +133,7 @@
 (defwidget timeboxwidget []
 	  (centerbox :class "clockbox" :orientation "h" :halign "center" 
 	  	(eventbox
-	  			:onclick "scripts/bluelightfilterdetection.sh --toggle"
+	  			:onclick "scripts/bluelightfilterdetection.sh --toggle" :class "bluelighttoggle"
 	  			(clockiconwidget :icon "" :iconcolor filterindicator)) ; maybe would be interesting to change icon depending on time of day
 	   (label :class "clocktext" :text "${time}")
 	   (eventbox 
@@ -218,7 +218,7 @@
 (defwindow diskwindow
 		:monitor 3
   :stacking "bg"
-  :geometry (geometry :x "2%"
+  :geometry (geometry :x "4.5%"
                       :y "1%"
                       ; :width "360px"
                       ; :height "320px"
@@ -229,8 +229,9 @@
 ; pacman
 ;; @@@@@@@@@@@@@@@@@@@
 (defpoll UPDATECOUNT :interval "60m" "checkupdates | wc -l")
+; (defpoll UPDATES :interval "1m" "echo \"$(checkupdates)\"")
 (defwidget pacmanwidget []
-		(eventbox :onclick "scripts/checkupdates.sh &" :class "pacmanbutton"
+		(eventbox :onclick "scripts/checkupdates.sh &" :class "pacmanbutton" ;:tooltip UPDATES
 		(box :class "infoitembox" :space-evenly false
 						(label :class "pacmantext" :text UPDATECOUNT)
 				(infoiconwidget :icon " " :iconclass "pacmanicon"))))
@@ -238,7 +239,7 @@
 ;; @@@@@@@@@@@@@@@@@@@
 ; Memory
 ;; @@@@@@@@@@@@@@@@@@@
-
+; (defpoll MEMINFO :interval "5s" "echo \"$(procs)\"")
 (defwidget memwidget []
 		(eventbox :class "membutton" :onclick "`konsole -e procs sand --sortd mem --watch-interval 5`"
 		(box :class "infoitembox" :space-evenly false
@@ -315,10 +316,11 @@
 				(memwidget)
 				(pacmanwidget)))
 
+
 (defwindow infowindow
 		:monitor 3
 		:stacking "fg"
-		:geometry (geometry :x "5%"
+		:geometry (geometry :x "4.5%"
                       :y "-30px"
                       :height "30px"
                       ; :width "300px"

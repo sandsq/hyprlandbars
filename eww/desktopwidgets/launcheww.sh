@@ -3,11 +3,13 @@
 configfile="/home/sand/Dropbox/linux/bars/eww/desktopwidgets/"
 # eww daemon --config ./
 # sleep 1
-sleep 0.5 && eww open clockwindow --config $configfile
-sleep 0.5 && eww open calendarwindow --config $configfile
-sleep 0.5 && eww open appswindow --config $configfile
-sleep 0.5 && eww open appstabletwindow --config $configfile
-sleep 0.5 && eww open weatherwindow --config $configfile
-sleep 0.5 && eww open diskwindow --config $configfile
-sleep 0.5 && eww open suntimewindow --config $configfile
-sleep 0.5 && eww open infowindow --config $configfile
+eww daemon --config $configfile
+eww open clockwindow --config $configfile
+eww open calendarwindow --config $configfile
+eww open weatherwindow --config $configfile
+eww open diskwindow --config $configfile
+eww open suntimewindow --config $configfile
+eww open infowindow --config $configfile
+sleep 1
+eww open appswindow --config $configfile
+eww open appstabletwindow --config $configfile
