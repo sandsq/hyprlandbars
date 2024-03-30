@@ -52,7 +52,7 @@ get_weather_data() {
 		elif [ "$weather_icon_code" == "01n"  ]; then
 			weather_icon=""
 			weather_quote="It's a clear night... \nwant to take a relaxing evening stroll?"
-			weather_hex="#fcdcf6"
+			weather_hex="#q"
 		elif [ "$weather_icon_code" == "02d"  ]; then
 			weather_icon=""
 			weather_quote="It's cloudy, sort of gloomy... \nyou'd better get a book to read..."
@@ -83,7 +83,7 @@ get_weather_data() {
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "09n"  ]; then
 			weather_icon=""
-			weather_quote=" It's gonna rain tonight it seems... \nmake sure your clothes aren't still outside..."
+			weather_quote=" It's gonna rain tonight! \nMake sure your clothes aren't still outside..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10d"  ]; then
 			weather_icon=""
@@ -91,7 +91,7 @@ get_weather_data() {
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10n"  ]; then
 			weather_icon=""
-			weather_quote=" It's gonna rain tonight it seems... \nmake sure your clothes aren't still outside..."
+			weather_quote=" It's gonna rain tonight! \nMake sure your clothes aren't still outside..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "11d"  ]; then
 			weather_icon=""

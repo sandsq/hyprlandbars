@@ -2,12 +2,16 @@ $fontfamilies: "FontAwesome", "Ubuntu Mono", monospace;
 
 $mainboxshadowcolor: rgba(10, 51, 55, 0.7);
 $diskboxshadowcolor: rgba(40, 80, 64, 0.70196);
+$barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.7);
 
 $desktopcolor: rgb(247, 237, 225);
 $desktopcoloropac: rgb(247, 237, 225, 0.7);
 $desktopcolorcal: rgb(247, 237, 225, 0.85);
 $darkdesktopcolor: #887857;
+$darkdesktopcolor2: #482a18;
 $desktoptextcolor: #25605e;
+
+$baroutlinecolor: black;
 
 $diskoutercolor: #cfc6b4;
 $diskinnercolor: #f5eee6;
@@ -67,39 +71,41 @@ $isbluescolor: false;
 
 $isgreenscolor: true;
 @if $isgreenscolor == true {
-	$mainboxshadowcolor: rgb(55.845, 44.37, 39.78, 0.8);
+	$mainboxshadowcolor: rgb(10.156, 54.844, 21.049, 0.8);
+	$baroutlinecolor: #051b0a;
+	$barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.7);
 
-	$infoboxcolor: rgb(239.06, 219.11, 207.19, 0.9); // rgb(146.94, 199.67, 230.06, 0.9);
-	// nice light blue-green rgb(159.41, 217.59, 195.35, 0.7);
+	$infoboxcolor: rgb(225.26, 231.09, 183.28, 0.8);
+
+
 	$infoboxdividercolor: $mainboxshadowcolor;
 
-	$clockcolor: $infoboxcolor;// rgb(141.45, 177.3, 163.6, 0.9);
+	$clockcolor: $infoboxcolor;
 	$clocktextcolor: #20162a;
 
-	// $suntimecolor: rgb(195.24, 123.51, 123.51, 0.6);
-	// $weathercolor: rgb(215.16, 167.34, 167.34, 0.6);
-	$weathercolor: $infoboxcolor; // rgb(132.82, 170.78, 94.219, 0.5);
+	$weathercolor: $infoboxcolor; 
 
-	$desktopcolor: rgb(193.92, 225.12, 189.25);
-	$desktopcoloropac: rgb(193.92, 225.12, 189.25, 0.7);
-	$desktopcolorcal: rgb(193.92, 225.12, 189.25, 0.9);
+	$desktopcolor: rgb(239.06, 219.11, 207.19, 0.9);
+	$desktopcoloropac: rgb(239.06, 219.11, 207.19, 0.7);
+	$desktopcolorcal: rgb(239.06, 219.11, 207.19, 0.8);
 	$darkdesktopcolor: rgb(34.548, 65.747, 29.878);
+	$darkdesktopcolor2: #301c10;
 
-	$suntimecolor: $desktopcoloropac;
+	$suntimecolor: $desktopcolorcal;
 
 	$desktoptextcolor: rgb(31.645, 26.895, 68.73);
-	$diskoutercolor: #d7e7db;
-	$diskinnercolor: #afcfb7;
+	$diskoutercolor: #f7ede7;
+	$diskinnercolor: #e7c9b7;
 }
 
 
-$mainborderradius: 0.4rem;
+$mainborderradius: 0.8rem;
 $borderradiusstyle: $mainborderradius; // 0 $mainborderradius 0 $mainborderradius;
 $mainfontsize: 15px;
 $mainboxshadow: 0.35rem 0.35rem 0 0rem $mainboxshadowcolor;
 $diskboxshadow: 0.35rem 0.35rem $diskboxshadowcolor;
 $smallboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
-
+$smallboxshadowsize: 0.15rem;
 
 
 $ispixelstyle: false;
@@ -122,7 +128,7 @@ $ispixelstyle: false;
 
 .dockbox {
 	background-color: $desktopcoloropac;
-	border: 0.2rem solid $darkdesktopcolor;
+	border: 0.2rem solid $darkdesktopcolor2;
 	border-radius: $borderradiusstyle; // $mainborderradius;
 	margin: 0.4rem;
 	padding: 1rem;
@@ -174,9 +180,9 @@ $ispixelstyle: false;
 	// font-size: 15px;
 	background-color: $weathercolor;
 	color: $clocktextcolor;
-	border: 2px solid black;
+	border: 2px solid $baroutlinecolor;
 	border-radius: $borderradiusstyle; // $mainborderradius;
-	box-shadow: $smallboxshadow;
+	box-shadow: $smallboxshadowsize $smallboxshadowsize $barboxshadowcolor;
 
 	-moz-background-clip: padding; 
 	-webkit-background-clip: padding-box;
@@ -187,7 +193,7 @@ $ispixelstyle: false;
 	font-family: Iosevka Nerd Font;
 	font-weight : normal;
 	margin-right: 0.4rem;
-	padding: 0 6px 0 3px;
+	padding: 0 8px 0 3px;
 	margin-bottom: 0px;
 	background-color: $darkdesktopcolor;
 	border-radius: 0.3rem;
@@ -224,14 +230,14 @@ $ispixelstyle: false;
 // @@@@@@@@@@@@@@
 .clockbox {
 
-  margin: 0rem 0.2rem 0.2rem 0.2rem;
-  padding: 0px 2px;
+  margin: 0rem 0.2rem 0.2rem 0rem;
+  padding: 0px 0px;
 	// font-size: 15px;
 	background-color: $clockcolor;
-	border: 2px solid black;
+	border: 2px solid $baroutlinecolor;
 	// border-radius: $mainborderradius;
 	border-radius: $borderradiusstyle;
-	box-shadow: $smallboxshadow;
+	box-shadow: $smallboxshadowsize $smallboxshadowsize $barboxshadowcolor;
 
 	-moz-background-clip: padding; 
 	-webkit-background-clip: padding-box;
@@ -249,15 +255,16 @@ $ispixelstyle: false;
     	padding-top: 3px;
     	padding-bottom: 0px;
     }
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
     font-size: 18px;
 }
 
 .clockicon {
 	font-size: 16px;
 	font-weight: normal;
-	margin: 0 5px;
+	margin: 0;
+	padding: 0 7px;
 	color: $clocktextcolor;
 	padding-top: 2px;
 }
@@ -271,7 +278,7 @@ $ispixelstyle: false;
 // calendar
 .calendarbox {
 	border-radius: $borderradiusstyle; // $mainborderradius;
-	border: 0.2rem solid $darkdesktopcolor;
+	border: 0.2rem solid $darkdesktopcolor2;
  	
  	padding: 1rem;
  	background: $desktopcolorcal;
@@ -326,7 +333,7 @@ $ispixelstyle: false;
 	font-size: 32px;
 	font-weight: bold;
 	color: #d4af37;
-	background-color: $darkdesktopcolor;
+	background-color: $darkdesktopcolor2;
 	padding: 0 16px 0 6px;
 	border-radius: 0.4rem;
 }
@@ -336,7 +343,7 @@ $ispixelstyle: false;
 	font-weight: bold;
 	margin-right: 0.7rem;
 	color: #c0c0c0;
-	background-color: $darkdesktopcolor;
+	background-color: $darkdesktopcolor2;
 	padding: 0 16px 0 6px;
 	border-radius: 0.4rem;
 }
@@ -349,7 +356,7 @@ $ispixelstyle: false;
 	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 	margin: 0.4rem;
 	border-radius: $borderradiusstyle; // $mainborderradius;
-	border: 0.2rem solid $darkdesktopcolor;
+	border: 0.2rem solid $darkdesktopcolor2;
 
 	box-shadow: $mainboxshadow;
 
@@ -363,7 +370,7 @@ $ispixelstyle: false;
 
 .res_box {
 	background-color: $desktopcoloropac;
-	border: 0.2rem solid $darkdesktopcolor;
+	border: 0.2rem solid $darkdesktopcolor2;
 	border-radius: $borderradiusstyle; // $mainborderradius;
 	padding: 14px 18px 0px 18px;
 	margin: 0.8rem;
@@ -412,7 +419,7 @@ $ispixelstyle: false;
 }
 
 .drive_type {
-	border: 2px solid $darkdesktopcolor;
+	border: 2px solid $darkdesktopcolor2;
 	border-radius: $mainborderradius;
 	padding: 0 0.5rem 0px 0.5rem;
 	margin: 0 0px 10px 0px;
@@ -436,10 +443,14 @@ tooltip {
 // @@@@@@@@@@@@@@@@@@@
 .infobox {
 	border-radius: $borderradiusstyle;
-	box-shadow: $smallboxshadow;
+	box-shadow: $smallboxshadowsize $smallboxshadowsize $barboxshadowcolor;
 	margin: 0 0.2rem 0.2rem 0;
 	background-color: $infoboxcolor;
-	border: 2px solid black;
+	border: 2px solid $baroutlinecolor;
+
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
 
 }
 
@@ -464,6 +475,7 @@ tooltip {
 	color: $paccolor;
 	font-size: 18px;
 	padding: 2px 0 0 0px;
+
 }
 
 .pacmanicon {
@@ -473,8 +485,11 @@ tooltip {
 }
 
 .pacmanbutton:hover {
-	border-radius: $mainborderradius;//0 $mainborderradius 0 0;
+	border-radius: 0 $mainborderradius $mainborderradius 0;
 	background-color: $barbuttonhover;
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
 }
 
 
