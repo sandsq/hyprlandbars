@@ -176,7 +176,7 @@ $ispixelstyle: false;
 // weather
 .weatherbox {
 	margin: 0rem 0.2rem 0.2rem 0rem;
-	padding: 2px 0.2rem 2px 0.5rem;
+	padding: 3px 0.2rem 2px 0.5rem;
 	// font-size: 15px;
 	background-color: $weathercolor;
 	color: $clocktextcolor;
@@ -232,10 +232,8 @@ $ispixelstyle: false;
 
   margin: 0rem 0.2rem 0.2rem 0rem;
   padding: 0px 0px;
-	// font-size: 15px;
 	background-color: $clockcolor;
 	border: 2px solid $baroutlinecolor;
-	// border-radius: $mainborderradius;
 	border-radius: $borderradiusstyle;
 	box-shadow: $smallboxshadowsize $smallboxshadowsize $barboxshadowcolor;
 
@@ -452,6 +450,8 @@ tooltip {
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
 
+	// padding-left: 500px;
+
 }
 
 .infoitembox {
@@ -606,6 +606,7 @@ tooltip {
 
 .spotifybox {
 	border: 0px none black;
+	
 }
 
 .spotifytext {

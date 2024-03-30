@@ -324,7 +324,7 @@
 		:geometry (geometry :x "4.5%"
                       :y "-31px"
                       :height "30px"
-                      ; :width "300px"
+                      ; :width "90%"
                       :anchor "top right")
 		(infowidget))
 
