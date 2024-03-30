@@ -297,7 +297,7 @@
 		(eventbox :onclick "playerctl -p spotify play-pause" :onscroll "`[[ {} == \"up\" ]] && playerctl -p spotify previous || playerctl -p spotify next`" :class "spotifybutton"
 				(centerbox :class "spotifybox"
 						(infoiconwidget :icon "${SPOTIFYINFO.icon}" :iconclass "spotifyplaypauseicon")
-						(label :class "spotifytext" :text "${SPOTIFYINFO.text}")
+						(label :class "spotifytext" :limit-width 30 :text "${SPOTIFYINFO.text}")
 						(infoiconwidget :icon "" :iconclass "spotifyicon"))))
 
 ;; @@@@@@@@@@@@@@@@@@@

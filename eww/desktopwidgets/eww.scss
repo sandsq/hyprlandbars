@@ -187,15 +187,16 @@ $ispixelstyle: false;
 	font-family: Iosevka Nerd Font;
 	font-weight : normal;
 	margin-right: 0.4rem;
-	padding: 0 6px 0 4px;
+	padding: 0 6px 0 3px;
 	margin-bottom: 0px;
 	background-color: $darkdesktopcolor;
-	border-radius: 0.2rem;
+	border-radius: 0.3rem;
 }
 
 .weathertemp {
 	font-weight : bold;
 	padding-top: 1px;
+	font-size: 18px;
 	// margin : 0px 0px 0px 3px;
 }
 
@@ -224,6 +225,7 @@ $ispixelstyle: false;
 .clockbox {
 
   margin: 0rem 0.2rem 0.2rem 0.2rem;
+  padding: 0px 2px;
 	// font-size: 15px;
 	background-color: $clockcolor;
 	border: 2px solid black;
@@ -244,7 +246,7 @@ $ispixelstyle: false;
     @if $ispixelstyle {
     	padding-top: 3.5px;	
     } @else {
-    	padding-top: 2px;
+    	padding-top: 3px;
     	padding-bottom: 0px;
     }
     padding-left: 5px;
@@ -253,10 +255,11 @@ $ispixelstyle: false;
 }
 
 .clockicon {
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: normal;
 	margin: 0 5px;
 	color: $clocktextcolor;
+	padding-top: 2px;
 }
 
 
@@ -470,7 +473,7 @@ tooltip {
 }
 
 .pacmanbutton:hover {
-	border-radius: 0 $mainborderradius 0 0;
+	border-radius: $mainborderradius;//0 $mainborderradius 0 0;
 	background-color: $barbuttonhover;
 }
 
@@ -621,7 +624,7 @@ tooltip {
 
 .spotifybutton:hover {
 	background-color: $barbuttonhover;
-	border-radius: 0 0 0 $mainborderradius;
+	border-radius: $mainborderradius;//0 0 0 $mainborderradius;
 }
 
 
