@@ -23,7 +23,7 @@
 
 (defwidget weatherwidget [] 
 			(box :class "weatherbox" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(label :class "weathericon" :style "color: ${HEX};" :text ICON)
+				(label :style "color: ${HEX};" :class "weathericon" :text ICON)
 				(label :class "weathertemp" :text TEMP)
 				(label :class "separator" :text "")
 				(label :class "weatherquote":text QUOTE)))
@@ -48,7 +48,7 @@
 (defwindow weatherwindow
 											:monitor 3
 											:geometry (geometry :x "17.5%"
-																															:y "-30px"
+																															:y "-31px"
 																															; :width "100px"
 																															:height "30px"
 																															:anchor "top left")
@@ -56,13 +56,14 @@
 			(weathertogetherwidget))
 
 (defwidget suntimeicon [icon stclass]
-		(label :class stclass :text icon))
+		(box :valign "center"
+		(label :class stclass :text icon)))
 
 (defwidget suntimewidget []
 		(box :class "suntime" :orientation "h" :spacing 0 :space-evenly false
 				(suntimeicon :icon "󰖜" :stclass "suntimeicon")
-				(label :class "suntimetext" :text "${SUNRISE}")
-				(label :class "suntimetext" :text "${SUNSET}")
+				(label :class "suntimetext1" :text "${SUNRISE}")
+				(label :class "suntimetext2" :text "${SUNSET}")
 				(suntimeicon :icon "󰖛" :stclass "suntimeicon2")))
 
 (defwindow suntimewindow
@@ -148,9 +149,9 @@
 (defwindow clockwindow
 					:monitor 3
 					:geometry (geometry :x "0"
-																									:y "-30px"
+																									:y "-31px"
 																									; :width "150px"
-																									:height "30px"
+																									:height "31px"
 																									:anchor "top center")
 					:stacking "overlay"
 			(timeboxwidget))
@@ -321,7 +322,7 @@
 		:monitor 3
 		:stacking "fg"
 		:geometry (geometry :x "4.5%"
-                      :y "-30px"
+                      :y "-31px"
                       :height "30px"
                       ; :width "300px"
                       :anchor "top right")

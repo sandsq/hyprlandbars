@@ -13,9 +13,24 @@ $diskoutercolor: #cfc6b4;
 $diskinnercolor: #f5eee6;
 
 $clockcolor: #ebc1e7;
+$clocktextcolor: black;
 $weathercolor: rgba(247, 237, 225, 0.15);
 
 $suntimecolor: rgb(234, 183, 127, 0.6);
+
+$infoboxcolor: rgb(143.26, 188.39, 239.24, 0.7);//rgb(146.94, 230.06, 198.28, 0.7);
+$infoboxdividercolor: #18684f;
+$wscolor: #626169;
+$paccolor: #503c30; 
+$ramcolor: #811e20;
+$cpucolor: #27525A;
+$tempcolor: #9f3b00;
+$controllercolor: #182d68;
+$audiocolor: #172016;
+$spotifycolor: #0b341b;
+$barbuttonhover: rgb(183.28, 231.1, 212.82);
+
+$infobarpadding: 0 10px 0 10px;
 
 $issproutlandscolor: false;
 @if $issproutlandscolor == true {
@@ -27,17 +42,18 @@ $issproutlandscolor: false;
 	$weathercolor: rgb(248, 208, 191, 0.4);
 }
 
-$ispixelisocolor: true;
-@if $ispixelisocolor == true {
+$isbluescolor: false;
+@if $isbluescolor == true {
 	$mainboxshadowcolor: rgb(10.156, 54.844, 21.049, 0.8);
 
-	$clockcolor: rgb(117.54, 201.21, 200.51, 0.9); 
+	$clockcolor: rgb(19, 65, 163, 0.9);
+	$clocktextcolor: #dfcdf1;
 	$weathercolor: rgb(248, 208, 191, 0.4);
 	// $suntimecolor: rgb(195.24, 123.51, 123.51, 0.6);
 	// $weathercolor: rgb(215.16, 167.34, 167.34, 0.6);
 
-	$suntimecolor: rgb(55.781, 126.55, 167.34, 0.9); 
-	$weathercolor: rgb(55.781, 126.55, 167.34, 0.5);
+	$suntimecolor: rgb(48, 131, 217, 0.9); //rgb(55.781, 126.55, 167.34, 0.9); 
+	$weathercolor: rgb(48, 131, 217, 0.5);
 
 	$desktopcolor: rgb(193.33, 189.25, 225.12);
 	$desktopcoloropac: rgb(193.33, 189.25, 225.12, 0.7);
@@ -49,9 +65,36 @@ $ispixelisocolor: true;
 	$diskinnercolor: rgb(180.43, 177.26, 205.24);
 }
 
+$isgreenscolor: true;
+@if $isgreenscolor == true {
+	$mainboxshadowcolor: rgb(55.845, 44.37, 39.78, 0.8);
 
-$mainborderradius: 0.6rem;
-$borderradiusstyle: 0 $mainborderradius 0 $mainborderradius;
+	$infoboxcolor: rgb(239.06, 219.11, 207.19, 0.9); // rgb(146.94, 199.67, 230.06, 0.9);
+	// nice light blue-green rgb(159.41, 217.59, 195.35, 0.7);
+	$infoboxdividercolor: $mainboxshadowcolor;
+
+	$clockcolor: $infoboxcolor;// rgb(141.45, 177.3, 163.6, 0.9);
+	$clocktextcolor: #20162a;
+
+	// $suntimecolor: rgb(195.24, 123.51, 123.51, 0.6);
+	// $weathercolor: rgb(215.16, 167.34, 167.34, 0.6);
+	$weathercolor: $infoboxcolor; // rgb(132.82, 170.78, 94.219, 0.5);
+
+	$desktopcolor: rgb(193.92, 225.12, 189.25);
+	$desktopcoloropac: rgb(193.92, 225.12, 189.25, 0.7);
+	$desktopcolorcal: rgb(193.92, 225.12, 189.25, 0.9);
+	$darkdesktopcolor: rgb(34.548, 65.747, 29.878);
+
+	$suntimecolor: $desktopcoloropac;
+
+	$desktoptextcolor: rgb(31.645, 26.895, 68.73);
+	$diskoutercolor: #d7e7db;
+	$diskinnercolor: #afcfb7;
+}
+
+
+$mainborderradius: 0.4rem;
+$borderradiusstyle: $mainborderradius; // 0 $mainborderradius 0 $mainborderradius;
 $mainfontsize: 15px;
 $mainboxshadow: 0.35rem 0.35rem 0 0rem $mainboxshadowcolor;
 $diskboxshadow: 0.35rem 0.35rem $diskboxshadowcolor;
@@ -67,19 +110,7 @@ $ispixelstyle: false;
 	$mainboxshadow: 0.35rem 0.35rem 0 0 $mainboxshadowcolor;
 }
 
-$infoboxcolor: rgb(146.94, 230.06, 198.28, 0.7);
-$infoboxdividercolor: #18684f;
-$wscolor: #626169;
-$paccolor: #503c30; 
-$ramcolor: #811e20;
-$cpucolor: #27525A;
-$tempcolor: #9f3b00;
-$controllercolor: #182d68;
-$audiocolor: #172016;
-$spotifycolor: #0b341b;
-$barbuttonhover: rgb(183.28, 231.1, 212.82);
 
-$infobarpadding: 0 10px 0 10px;
 
 
 *{
@@ -142,6 +173,7 @@ $infobarpadding: 0 10px 0 10px;
 	padding: 2px 0.2rem 2px 0.5rem;
 	// font-size: 15px;
 	background-color: $weathercolor;
+	color: $clocktextcolor;
 	border: 2px solid black;
 	border-radius: $borderradiusstyle; // $mainborderradius;
 	box-shadow: $smallboxshadow;
@@ -155,8 +187,10 @@ $infobarpadding: 0 10px 0 10px;
 	font-family: Iosevka Nerd Font;
 	font-weight : normal;
 	margin-right: 0.4rem;
-	padding: 0px;
+	padding: 0 6px 0 4px;
 	margin-bottom: 0px;
+	background-color: $darkdesktopcolor;
+	border-radius: 0.2rem;
 }
 
 .weathertemp {
@@ -204,29 +238,31 @@ $infobarpadding: 0 10px 0 10px;
 
 
 .clocktext {
+		color: $clocktextcolor;
     font-weight: bold;
 
     @if $ispixelstyle {
     	padding-top: 3.5px;	
     } @else {
-    	padding-top: 0px;
+    	padding-top: 2px;
     	padding-bottom: 0px;
     }
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .clockicon {
 	font-size: 14px;
 	font-weight: normal;
-	margin: 0 5px;	
+	margin: 0 5px;
+	color: $clocktextcolor;
 }
 
 
 .bluelighttoggle:hover {
 	background-color: #c0d2de;
-	border-radius: 0 0 0 $mainborderradius;
+	border-radius: $mainborderradius;//0 0 0 $mainborderradius;
 }
 
 // calendar
@@ -261,24 +297,35 @@ $infobarpadding: 0 10px 0 10px;
 	border-radius: $borderradiusstyle; // $mainborderradius;
 	border: 0.15rem solid black;
 	background-color: $suntimecolor;
-	padding: 0 1rem 0 1rem;
+	padding: 0 0rem 0 0.7rem;
 	margin: 0.4rem;
 	
 	box-shadow: $mainboxshadow;
 }
 
-.suntimetext {
+.suntimetext1 {
+	color: $clocktextcolor;
 	font-size: 24px;
 	font-weight: bold;
-	margin: 0 1rem 0 1.5rem;
-	
+	margin: 0 1rem 0 1rem;
+	padding: 15px 0px;
+}
+
+.suntimetext2 {
+	color: $clocktextcolor;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0 1rem 0 1rem;
+	padding: 0px 0px;	
 }
 
 .suntimeicon {
 	font-size: 32px;
 	font-weight: bold;
 	color: #d4af37;
-	// margin: 0 0.5rem;
+	background-color: $darkdesktopcolor;
+	padding: 0 16px 0 6px;
+	border-radius: 0.4rem;
 }
 
 .suntimeicon2 {
@@ -286,6 +333,9 @@ $infobarpadding: 0 10px 0 10px;
 	font-weight: bold;
 	margin-right: 0.7rem;
 	color: #c0c0c0;
+	background-color: $darkdesktopcolor;
+	padding: 0 16px 0 6px;
+	border-radius: 0.4rem;
 }
 
 // @@@@@@@@@@@@@@@
@@ -359,7 +409,8 @@ $infobarpadding: 0 10px 0 10px;
 }
 
 .drive_type {
-	border: 2px solid $mainboxshadowcolor;
+	border: 2px solid $darkdesktopcolor;
+	border-radius: $mainborderradius;
 	padding: 0 0.5rem 0px 0.5rem;
 	margin: 0 0px 10px 0px;
 	color: $desktoptextcolor;// $mainboxshadowcolor;
@@ -386,12 +437,14 @@ tooltip {
 	margin: 0 0.2rem 0.2rem 0;
 	background-color: $infoboxcolor;
 	border: 2px solid black;
+
 }
 
 .infoitembox {
 	// border: 0 solid black;
 	border-left: 2px dotted $infoboxdividercolor;
 	padding: $infobarpadding;
+
 }
 
 .genericicon {
@@ -406,13 +459,14 @@ tooltip {
 .pacmantext {
 	font-weight: bold;
 	color: $paccolor;
-	// padding: 0 0 0 4px;
+	font-size: 18px;
+	padding: 2px 0 0 0px;
 }
 
 .pacmanicon {
 	font-weight: bold;
 	color: $paccolor;
-	padding: 0px 0px 0 4px;
+	padding: 1px 0px 0 4px;
 }
 
 .pacmanbutton:hover {
@@ -427,6 +481,8 @@ tooltip {
 .memtext {
 	font-weight: bold;
 	color: $ramcolor;
+	font-size: 18px;
+	padding: 2px 0 0 0px;
 	// padding: 0 0 0 4px;
 }
 
@@ -434,6 +490,7 @@ tooltip {
 	font-weight: bold;
 	color: $ramcolor;
 	padding: 1px 0px 0 4px;
+	font-size: 18px;
 }
 
 .membutton:hover {
@@ -447,12 +504,15 @@ tooltip {
 .cputext {
 	font-weight: bold;
 	color: $cpucolor;
+	font-size: 18px;
+	padding: 2px 0 0 0px;
 }
 
 .cpuicon {
 	font-weight: bold;
 	color: $cpucolor;
 	padding: 1px 0px 0 0px;
+	font-size: 18px;
 }
 
 .cpubutton:hover {
@@ -466,12 +526,15 @@ tooltip {
 	font-weight: bold;
 	color: $tempcolor;
 	// padding: 0 0 0 4px;
+	font-size: 18px;
+	padding: 2px 0 0 0px;
 }
 
 .cputempicon {
 	font-weight: bold;
 	color: $tempcolor;
 	padding: 1px 0px 0 4px;
+	font-size: 18px;
 }
 
 // @@@@@@@@@@@@@@@@@@@
@@ -480,13 +543,16 @@ tooltip {
 .controllertext {
 	font-weight: bold;
 	color: $controllercolor;
-	// padding: 0 0 0 4px;
+	
+	font-size: 18px;
+	padding: 1px 0 0 0px;
 }
 
 .controllericon {
 	font-weight: bold;
 	color: $controllercolor;
-	padding: 2px 0px 0 4px;
+	padding: 1px 0px 0 4px;
+	font-size: 18px;
 }
 
 // @@@@@@@@@@@@@@@@@@@
@@ -495,13 +561,17 @@ tooltip {
 .audiotext {
 	font-weight: bold;
 	color: $audiocolor;
-	// padding: 0 0 0 4px;
+	
+	font-size: 18px;
+	padding: 2px 0 0 0px;
 }
 
 .audioicon {
 	font-weight: bold;
 	color: $audiocolor;
 	padding-left: 4px;
+	font-size: 18px;
+	padding-top: 1px;
 }
 
 .audiobutton {
@@ -523,18 +593,22 @@ tooltip {
 .spotifytext {
 	font-weight: bold;
 	color: $spotifycolor;
+	font-size: 18px;
+	padding: 2px 0 0 0px;
 }
 
 .spotifyplaypauseicon {
-	// padding: 2px 5px 0px 5px;
-	padding: 2px 5px 0 0px;
+	
+	padding: 1px 5px 0 0px;
 	color: $spotifycolor;
+	font-size: 18px;
 }
 
 .spotifyicon {
-	// padding: 1px 5px 0px 5px;
-	padding: 2px 0px 0 5px;
+	
+	padding: 1px 0px 0 5px;
 	color: $spotifycolor;
+	font-size: 18px;
 }
 
 .spotifybox {	

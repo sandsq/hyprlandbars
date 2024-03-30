@@ -1,6 +1,7 @@
 #!/bin/bash
 filteroncolor="#CF5A2A"
 filteroffcolor="#003e7d"
+# filteroffcolor="#2e87e2"
 iconcolor=$filteroffcolor
 othericoncolor=$filteroncolor
 shadestate=`hyprshade current`
