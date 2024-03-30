@@ -31,10 +31,13 @@ $ispixelisocolor: true;
 @if $ispixelisocolor == true {
 	$mainboxshadowcolor: rgb(10.156, 54.844, 21.049, 0.8);
 
-	$clockcolor: rgb(159.38, 223.13, 222.59, 0.9); 
+	$clockcolor: rgb(117.54, 201.21, 200.51, 0.9); 
 	$weathercolor: rgb(248, 208, 191, 0.4);
-	$suntimecolor: rgb(195.24, 123.51, 123.51, 0.6);
-	$weathercolor: rgb(215.16, 167.34, 167.34, 0.6);
+	// $suntimecolor: rgb(195.24, 123.51, 123.51, 0.6);
+	// $weathercolor: rgb(215.16, 167.34, 167.34, 0.6);
+
+	$suntimecolor: rgb(55.781, 126.55, 167.34, 0.9); 
+	$weathercolor: rgb(55.781, 126.55, 167.34, 0.5);
 
 	$desktopcolor: rgb(193.33, 189.25, 225.12);
 	$desktopcoloropac: rgb(193.33, 189.25, 225.12, 0.7);
@@ -136,7 +139,7 @@ $infobarpadding: 0 10px 0 10px;
 // weather
 .weatherbox {
 	margin: 0rem 0.2rem 0.2rem 0rem;
-	padding: 0.25rem 0.2rem 0.25rem 0.5rem;
+	padding: 2px 0.2rem 2px 0.5rem;
 	// font-size: 15px;
 	background-color: $weathercolor;
 	border: 2px solid black;
