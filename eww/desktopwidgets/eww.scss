@@ -72,10 +72,10 @@ $isbluescolor: false;
 $isgreenscolor: true;
 @if $isgreenscolor == true {
 	$mainboxshadowcolor: rgb(10.156, 54.844, 21.049, 0.8);
-	$baroutlinecolor: rgb(5, 27, 10, 0);
+	$baroutlinecolor: rgb(5, 27, 10, 0.0);
 	$barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.0);
 
-	$infoboxcolor: #b9c758;
+	$infoboxcolor: rgb(143.61, 164.36, 122.52);
 
 
 	$infoboxdividercolor: $mainboxshadowcolor;
@@ -99,7 +99,7 @@ $isgreenscolor: true;
 }
 
 
-$mainborderradius: 0.8rem;
+$mainborderradius: 0.9rem;
 $borderradiusstyle: $mainborderradius; // 0 $mainborderradius 0 $mainborderradius;
 $mainfontsize: 15px;
 $mainboxshadow: 0.35rem 0.35rem 0 0rem $mainboxshadowcolor;
@@ -259,14 +259,13 @@ $ispixelstyle: false;
 }
 
 .clockicon {
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
 	padding: 0 7px;
 	color: $clocktextcolor;
-	padding-top: 2px;
+	padding-top: 1px;
 }
-
 
 .bluelighttoggle:hover {
 	background-color: #c0d2de;
@@ -647,6 +646,8 @@ tooltip {
 
 
 .bar {
-	background-color: rgb(225.26, 231.09, 183.28, 0.8);
+	// background-color: 
+	background-image: linear-gradient(to bottom, rgb(215.35, 223.12, 159.38, 1), rgb(225.26, 231.09, 183.28, 0.3));
+	// border-bottom: 2px solid rgb(200, 200, 200, 0.7)
 }
 

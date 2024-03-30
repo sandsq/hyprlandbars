@@ -337,7 +337,7 @@
 		:stacking "bg"
 		:geometry (geometry :x "0%"
                       :y "-38px"
-                      :height "41px"
+                      :height "39px"
                       :width "100%"
                       :anchor "top right")
 		(barwidget))

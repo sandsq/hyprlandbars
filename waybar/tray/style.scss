@@ -1,6 +1,6 @@
 $fontfamilies: "FontAwesome", "Ubuntu Mono", monospace;
 $mainboxshadowcolor: rgba(10, 51, 55, 0.7);
-$mainborderradius: 0.8rem;
+$mainborderradius: 0.9rem;
 $borderradiusstyle: $mainborderradius; //0 $mainborderradius 0 $mainborderradius;
 $mainfontsize: 15px;
 $mainboxshadow: 0.15rem 0.15rem $mainboxshadowcolor;
@@ -9,7 +9,7 @@ $baroutlinecolor: #051b0a;
 $barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.7);
 
 // $wscolor: rgb(57.856, 71.719, 55.781, 0.7); //#324a4c;
-$wscolor: #b9c758;
+$wscolor: rgb(143.61, 164.36, 122.52);
 // $wstextcolor: #dfcdf1;
 $wstextcolor: #20162a;
 
@@ -156,7 +156,7 @@ button:hover {
 }
 
 #workspaces button.active {
-    color: #206047;
+    color: #184835;
 }
 
 #workspaces button:hover {
