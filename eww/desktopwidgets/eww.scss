@@ -72,10 +72,10 @@ $isbluescolor: false;
 $isgreenscolor: true;
 @if $isgreenscolor == true {
 	$mainboxshadowcolor: rgb(10.156, 54.844, 21.049, 0.8);
-	$baroutlinecolor: #051b0a;
-	$barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.7);
+	$baroutlinecolor: rgb(5, 27, 10, 0);
+	$barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.0);
 
-	$infoboxcolor: rgb(225.26, 231.09, 183.28, 0.8);
+	$infoboxcolor: #b9c758;
 
 
 	$infoboxdividercolor: $mainboxshadowcolor;
@@ -193,7 +193,7 @@ $ispixelstyle: false;
 	font-family: Iosevka Nerd Font;
 	font-weight : normal;
 	margin-right: 0.4rem;
-	padding: 0 8px 0 3px;
+	padding: 0 10px 0 3px;
 	margin-bottom: 0px;
 	background-color: $darkdesktopcolor;
 	border-radius: 0.3rem;
@@ -646,5 +646,7 @@ tooltip {
 
 
 
-
+.bar {
+	background-color: rgb(225.26, 231.09, 183.28, 0.8);
+}
 

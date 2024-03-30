@@ -2,9 +2,9 @@
 
 
 if [[ "$1" == "up" ]]; then
-	pamixer -i 5
+	pamixer -i 2
 elif [[ "$1" == "down" ]]; then
-	pamixer -d 5
+	pamixer -d 2
 else
 	currenticon=""
 	othericon=""

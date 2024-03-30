@@ -9,9 +9,11 @@ $baroutlinecolor: #051b0a;
 $barboxshadowcolor: rgb(26.895, 21.37, 4.9805, 0.7);
 
 // $wscolor: rgb(57.856, 71.719, 55.781, 0.7); //#324a4c;
-$wscolor: rgb(43.925, 47.813, 15.938, 0.9);
+$wscolor: #b9c758;
 // $wstextcolor: #dfcdf1;
-$wstextcolor: #dfd5e9;
+$wstextcolor: #20162a;
+
+
 $paccolor: #ffee70;
 $ramcolor: #bc7ed5;
 $cpucolor: #5dda92;
@@ -77,14 +79,14 @@ $issproutlandscolor: false;
 #workspaces {
     background-color: $wscolor;
     color: $wstextcolor;
-    box-shadow: 0.15rem 0.15rem $barboxshadowcolor; // rgba(89, 74, 56, 0.7); 
+    // box-shadow: 0.15rem 0.15rem $barboxshadowcolor; // rgba(89, 74, 56, 0.7); 
 /*    #71c5cd;*/
     margin-bottom: 0.2rem;
 
     padding: 1px 0px 1px 0px;
 
-    border-style: solid;
-    border-color: $baroutlinecolor; //#f7ede1;
+    // border-style: solid;
+    // border-color: $baroutlinecolor; //#f7ede1;
 
     -moz-background-clip: padding; 
     -webkit-background-clip: padding-box;
@@ -154,7 +156,7 @@ button:hover {
 }
 
 #workspaces button.active {
-    color: #4ac395;
+    color: #206047;
 }
 
 #workspaces button:hover {
