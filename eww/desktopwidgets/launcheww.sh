@@ -4,6 +4,7 @@ configfile="/home/sand/Dropbox/linux/bars/eww/desktopwidgets/"
 # eww daemon --config ./
 # sleep 1
 eww daemon --config $configfile
+eww open barwindow --config $configfile
 eww open clockwindow --config $configfile
 eww open calendarwindow --config $configfile
 eww open weatherwindow --config $configfile

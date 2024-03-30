@@ -55,7 +55,7 @@ get_weather_data() {
 			weather_hex="#q"
 		elif [ "$weather_icon_code" == "02d"  ]; then
 			weather_icon=""
-			weather_quote="It's cloudy, sort of gloomy... \nyou'd better get a book to read..."
+			weather_quote="It's cloudy, sort of gloomy... \nbetter get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "02n"  ]; then
 			weather_icon=""
@@ -63,7 +63,7 @@ get_weather_data() {
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "03d"  ]; then
 			weather_icon=""
-			weather_quote="It's cloudy, sort of gloomy... \nyou'd better get a book to read..."
+			weather_quote="It's cloudy, sort of gloomy... \nbetter get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "03n"  ]; then
 			weather_icon="" #" "
@@ -71,7 +71,7 @@ get_weather_data() {
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04d"  ]; then
 			weather_icon=""
-			weather_quote="It's cloudy, sort of gloomy... \nyou'd better get a book to read..."
+			weather_quote="It's cloudy, sort of gloomy... \nbetter get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04n"  ]; then
 			weather_icon="" #" "
