@@ -18,7 +18,7 @@
     "modules-right": ["tray"], //["custom/spotify", "pulseaudio", "custom/controller", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
-        "show_special": true,
+        "show-special": false,
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,

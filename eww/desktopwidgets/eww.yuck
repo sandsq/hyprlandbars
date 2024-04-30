@@ -293,11 +293,13 @@
 
 (deflisten SPOTIFYINFO :initial "" `/usr/bin/python scripts/mediaplayer.py --player spotify`)
 ; (defvar SPOTIFYINFO "hello")
+(defvar TRAIL "...")
 (defwidget spotifywidget []
 		(eventbox :onclick "playerctl -p spotify play-pause" :onscroll "`[[ {} == \"up\" ]] && playerctl -p spotify previous || playerctl -p spotify next`" :class "spotifybutton"
 				(centerbox :class "spotifybox"
 						(infoiconwidget :icon "${SPOTIFYINFO.icon}" :iconclass "spotifyplaypauseicon")
-						(label :class "spotifytext" :limit-width 30 :text "${SPOTIFYINFO.text}")
+						(box :space-evenly "false" (label :class "spotifytext" :show-truncated "false" :limit-width 27 :text "${SPOTIFYINFO.text}")
+						(label :class "spotifytext" :text "..."))
 						(infoiconwidget :icon "" :iconclass "spotifyicon"))))
 
 ;; @@@@@@@@@@@@@@@@@@@

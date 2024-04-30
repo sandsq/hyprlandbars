@@ -38,59 +38,59 @@ get_weather_data() {
 
 		#Big long if statement of doom
 		if [ "$weather_icon_code" == "50d"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="Forecast says it's misty... \nmake sure you don't get lost on your way..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "50n"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="Forecast says it's a misty night... \ntake care not to get lost..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "01d"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="It's a sunny day, gonna be fun! \nDon't go wandering by yourself though..."
 			weather_hex="#ffd86b"
 		elif [ "$weather_icon_code" == "01n"  ]; then
 			weather_icon=""
 			weather_quote="It's a clear night... \nwant to take a relaxing evening stroll?"
-			weather_hex="#q"
+			weather_hex="#a0a0a0"
 		elif [ "$weather_icon_code" == "02d"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="It's cloudy, sort of gloomy... \nbetter get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "02n"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="It's a cloudy night... \nhow about some hot chocolate and a warm bed?"
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "03d"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="It's cloudy, sort of gloomy... \nbetter get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "03n"  ]; then
-			weather_icon="" #" "
+			weather_icon=" " #" "
 			weather_quote="It's a cloudy night... \nhow about some hot chocolate and a warm bed?"
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04d"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="It's cloudy, sort of gloomy... \nbetter get a book to read..."
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "04n"  ]; then
-			weather_icon="" #" "
+			weather_icon=" " #" "
 			weather_quote="It's a cloudy night... \nhow about some hot chocolate and a warm bed?"
 			weather_hex="#adadff"
 		elif [ "$weather_icon_code" == "09d"  ]; then
-			weather_icon=""
+			weather_icon="" # doesn't need space
 			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch the rain fall..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "09n"  ]; then
-			weather_icon=""
+			weather_icon="" # doesn't need space
 			weather_quote=" It's gonna rain tonight! \nMake sure your clothes aren't still outside..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10d"  ]; then
-			weather_icon=""
+			weather_icon="" # doesn't need space
 			weather_quote="It's rainy, it's a great day! \nGet some ramen and watch the rain fall..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "10n"  ]; then
-			weather_icon=""
+			weather_icon="" # doesn't need space
 			weather_quote=" It's gonna rain tonight! \nMake sure your clothes aren't still outside..."
 			weather_hex="#6b95ff"
 		elif [ "$weather_icon_code" == "11d"  ]; then
@@ -110,11 +110,11 @@ get_weather_data() {
 			weather_quote="It's gonna snow tonight... \nmake sure you get up early to see the sights..."
 			weather_hex="#e3e6fc"
 		elif [ "$weather_icon_code" == "40d"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="Forecast says it's misty... \nmake sure you don't get lost on your way..."
 			weather_hex="#84afdb"
 		elif [ "$weather_icon_code" == "40n"  ]; then
-			weather_icon=""
+			weather_icon=" "
 			weather_quote="Forecast says it's a misty night... \ntake care not to get lost..."
 			weather_hex="#84afdb"
 		else 
