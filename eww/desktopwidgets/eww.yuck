@@ -229,7 +229,7 @@
 ;; @@@@@@@@@@@@@@@@@@@
 ; pacman
 ;; @@@@@@@@@@@@@@@@@@@
-(defpoll UPDATECOUNT :interval "60m" "checkupdates | wc -l")
+(defpoll UPDATECOUNT :interval "720m" "checkupdates | wc -l")
 ; (defpoll UPDATES :interval "1m" "echo \"$(checkupdates)\"")
 (defwidget pacmanwidget []
 		(eventbox :onclick "scripts/checkupdates.sh &" :class "pacmanbutton" ;:tooltip UPDATES
@@ -322,7 +322,7 @@
 
 (defwindow infowindow
 		:monitor 3
-		:stacking "fg"
+		:stacking "overlay"
 		:geometry (geometry :x "4.5%"
                       :y "-30px"
                       :height "30px"

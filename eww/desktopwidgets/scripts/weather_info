@@ -98,8 +98,8 @@ get_weather_data() {
 			weather_quote="There's storm for forecast today... \nmake sure you don't get blown away..."
 			weather_hex="#ffeb57"
 		elif [ "$weather_icon_code" == "11n"  ]; then
-			weather_icon=""
-			weather_quote="There's gonna be storms tonight... \nmake sure you're warm in bed and the windows are shut..."
+			weather_icon=" "
+			weather_quote="There's gonna be storms tonight... \nshut the windows and cozy up in bed..."
 			weather_hex="#ffeb57"
 		elif [ "$weather_icon_code" == "13d"  ]; then
 			weather_icon=""

@@ -120,7 +120,7 @@
    },
    "custom/pacman": {
         "format": "<b>{}</b> ",
-        "interval": 3600, // every hour
+        "interval": 43200, // every 12 hours
         "exec": "checkupdates | wc -l",
         // "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
         "exec-if": "exit 0", // always run; consider advanced run conditions
