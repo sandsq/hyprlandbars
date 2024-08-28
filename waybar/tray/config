@@ -6,7 +6,7 @@
     // "height": 41, // Waybar height (to be removed for auto height)
     "margin-top": 3,
     // "margin-bottom": -4,
-    "output": ["DP-3"],
+    "output": ["DP-3", "HDMI-A-1"],
     // "width": 1280, // Waybar width
     "spacing": 6, // Gaps between modules (4px)
     "layer": "top",
@@ -14,7 +14,7 @@
     // "exclusive": true,
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": [],//["clock", ],
+    "modules-center": [],
     "modules-right": ["tray"], //["custom/spotify", "pulseaudio", "custom/controller", "temperature", "cpu", "memory", "custom/pacman", "custom/colorpicker", "tray"],
     // Modules configuration
     "hyprland/workspaces": {

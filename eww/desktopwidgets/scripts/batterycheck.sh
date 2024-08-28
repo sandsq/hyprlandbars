@@ -1,5 +1,6 @@
 #!/usr/bin/bash
-batteryvalue=$( cat /sys/class/power_supply/ps-controller-battery-88:03:4c:17:04:f0/capacity )
+# batteryvalue=$( cat /sys/class/power_supply/ps-controller-battery-88:03:4c:17:04:f0/capacity )
+batteryvalue=$(  cat /sys/class/power_supply/ps-controller-battery-ac:36:1b:a4:c8:31/capacity )
 re='^[0-9]+$'
 if [[ $batteryvalue =~ $re ]] ; then
 	echo $batteryvalue

@@ -14,7 +14,8 @@ else
 	# echo "$relevantsinks"
 	unusedsinkfull=`echo "$relevantsinks" | grep -v "\*"` 
 	# echo $unusedsinkfull
-	if [[ $unusedsinkfull =~ "Yeti" ]]; then
+	# if [[ $unusedsinkfull =~ "Yeti" ]]; then
+	if [[ $unusedsinkfull =~ "USB" ]]; then
 		currenticon=""
 		othericon=""
 	else

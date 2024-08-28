@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 configfile="/home/sand/Dropbox/linux/bars/eww/desktopwidgets/"
 # eww daemon --config ./

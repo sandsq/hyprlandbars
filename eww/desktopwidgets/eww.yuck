@@ -266,6 +266,7 @@
 			(label :class "cputemptext" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°C")
 			(infoiconwidget :icon "" :iconclass "cputempicon")))
 
+
 ;; @@@@@@@@@@@@@@@@@@@
 ; Controller
 ;; @@@@@@@@@@@@@@@@@@@
